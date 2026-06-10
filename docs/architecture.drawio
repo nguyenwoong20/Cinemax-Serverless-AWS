@@ -1,0 +1,69 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Cinemax Serverless" id="cinemax-arch">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="awscloud" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fontColor=#232F3E;align=left;verticalAlign=top;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="60" width="1000" height="660" as="geometry" />
+        </mxCell>
+
+        <mxCell id="region" value="ap-southeast-1 (Singapore)" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#147EBA;fontColor=#147EBA;align=left;verticalAlign=top;dashed=1;labelBackgroundColor=none;" vertex="1" parent="awscloud">
+          <mxGeometry x="40" y="50" width="920" height="570" as="geometry" />
+        </mxCell>
+
+        <mxCell id="apigw" value="Amazon API Gateway&#10;REST API · prod" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="region">
+          <mxGeometry x="80" y="250" width="64" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lmovies" value="Lambda&#10;cinemax-movies" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="region">
+          <mxGeometry x="330" y="60" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="lauth" value="Lambda&#10;cinemax-auth" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="region">
+          <mxGeometry x="330" y="250" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="lbook" value="Lambda&#10;cinemax-bookmarks" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="region">
+          <mxGeometry x="330" y="440" width="64" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dmovies" value="DynamoDB&#10;cinemax-movies (GSI: slug, category)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="region">
+          <mxGeometry x="600" y="60" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="dusers" value="DynamoDB&#10;cinemax-users (PK: email)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="region">
+          <mxGeometry x="600" y="250" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="dbook" value="DynamoDB&#10;cinemax-bookmarks (userId+movieId)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="region">
+          <mxGeometry x="600" y="440" width="64" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s3" value="Amazon S3&#10;cinemax-posters" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="region">
+          <mxGeometry x="80" y="440" width="64" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cw" value="Amazon CloudWatch&#10;logs · 5XX alarm" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;" vertex="1" parent="region">
+          <mxGeometry x="820" y="440" width="64" height="64" as="geometry" />
+        </mxCell>
+
+        <mxCell id="clients" value="Cinemax App&#10;(Flutter client)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fontStyle=1;strokeColor=#232F3E;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="20" y="370" width="110" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gmail" value="Gmail SMTP&#10;OTP emails (external)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;strokeColor=#D93025;fontColor=#D93025;fillColor=#FFFFFF;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="740" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="HTTPS / JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" edge="1" parent="1" source="clients" target="apigw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" value="/api/movies/*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" edge="1" parent="region" source="apigw" target="lmovies"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" value="/api/auth/*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" edge="1" parent="region" source="apigw" target="lauth"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" value="/users/.../bookmarks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#232F3E;" edge="1" parent="region" source="apigw" target="lbook"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#232F3E;" edge="1" parent="region" source="lmovies" target="dmovies"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#232F3E;" edge="1" parent="region" source="lauth" target="dusers"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#232F3E;" edge="1" parent="region" source="lbook" target="dbook"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" value="GET posters" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#7AA116;fontColor=#7AA116;dashed=1;" edge="1" parent="1" source="clients" target="s3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#E7157B;fontColor=#E7157B;dashed=1;" edge="1" parent="region" source="lbook" target="cw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e10" value="send OTP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=10;strokeColor=#D93025;fontColor=#D93025;dashed=1;" edge="1" parent="1" source="lauth" target="gmail"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
