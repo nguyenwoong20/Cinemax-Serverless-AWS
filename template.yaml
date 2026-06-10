@@ -1,0 +1,252 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Cinemax Serverless API - Movie backend for the Cinemax Flutter app.
+  Services: API Gateway, Lambda, DynamoDB, S3, CloudWatch.
+
+Parameters:
+  JwtSecret:
+    Type: String
+    NoEcho: true
+    Description: Secret for signing JWT tokens
+  EmailUser:
+    Type: String
+    Default: ''
+    Description: Gmail address used to send OTP emails
+  EmailPass:
+    Type: String
+    NoEcho: true
+    Default: ''
+    Description: Gmail app password
+  GoogleClientId:
+    Type: String
+    Default: ''
+    Description: Google OAuth web client ID
+  GoogleAndroidClientId:
+    Type: String
+    Default: ''
+    Description: Google OAuth Android client ID
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    MemorySize: 256
+    Timeout: 10
+    Architectures:
+      - arm64
+    Environment:
+      Variables:
+        MOVIES_TABLE: !Ref MoviesTable
+        BOOKMARKS_TABLE: !Ref BookmarksTable
+        POSTERS_BUCKET: !Ref PostersBucket
+
+Resources:
+  # ---------- API Gateway ----------
+  CinemaxApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: cinemax-api
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+        AllowHeaders: "'Content-Type,Authorization'"
+        AllowOrigin: "'*'"
+
+  # ---------- Lambda Functions ----------
+  MoviesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cinemax-movies
+      Handler: src/handlers/movies.handler
+      Description: CRUD for movies (list, get, search, create, update, delete)
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref MoviesTable
+      Events:
+        ListMovies:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/movies
+            Method: GET
+        MovieRoutes:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/movies/{proxy+}
+            Method: ANY
+
+  BookmarksFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cinemax-bookmarks
+      Handler: src/handlers/bookmarks.handler
+      Description: User bookmarks (list, add, remove)
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BookmarksTable
+      Events:
+        ListBookmarks:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /users/{userId}/bookmarks
+            Method: GET
+        AddBookmark:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /users/{userId}/bookmarks
+            Method: POST
+        RemoveBookmark:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /users/{userId}/bookmarks/{movieId}
+            Method: DELETE
+
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cinemax-auth
+      Handler: src/handlers/auth.handler
+      Description: Auth API (register, login, OTP verify, Google login, password reset)
+      Timeout: 20
+      Environment:
+        Variables:
+          USERS_TABLE: !Ref UsersTable
+          JWT_SECRET: !Ref JwtSecret
+          JWT_EXPIRE: 7d
+          EMAIL_USER: !Ref EmailUser
+          EMAIL_PASS: !Ref EmailPass
+          GOOGLE_CLIENT_ID: !Ref GoogleClientId
+          GOOGLE_ANDROID_CLIENT_ID: !Ref GoogleAndroidClientId
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref UsersTable
+      Events:
+        AuthRoutes:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/auth/{proxy+}
+            Method: POST
+
+  # ---------- DynamoDB ----------
+  MoviesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-movies
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: category
+          AttributeType: S
+        - AttributeName: createdAt
+          AttributeType: S
+        - AttributeName: slug
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: category-createdAt-index
+          KeySchema:
+            - AttributeName: category
+              KeyType: HASH
+            - AttributeName: createdAt
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+        - IndexName: slug-index
+          KeySchema:
+            - AttributeName: slug
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: email
+          KeyType: HASH
+
+  BookmarksTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-bookmarks
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: movieId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+        - AttributeName: movieId
+          KeyType: RANGE
+
+  # ---------- S3 (movie posters) ----------
+  PostersBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub cinemax-posters-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: false
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: false
+      CorsConfiguration:
+        CorsRules:
+          - AllowedMethods: [GET]
+            AllowedOrigins: ['*']
+            AllowedHeaders: ['*']
+
+  PostersBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref PostersBucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadPostersOnly
+            Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Sub ${PostersBucket.Arn}/posters/*
+
+  # ---------- CloudWatch ----------
+  ApiErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: cinemax-api-5xx-errors
+      AlarmDescription: Alarm when the Cinemax API returns 5XX errors
+      Namespace: AWS/ApiGateway
+      MetricName: 5XXError
+      Dimensions:
+        - Name: ApiName
+          Value: cinemax-api
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+Outputs:
+  ApiUrl:
+    Description: Base URL of the Cinemax API
+    Value: !Sub https://${CinemaxApi}.execute-api.${AWS::Region}.amazonaws.com/prod
+  PostersBucketName:
+    Description: S3 bucket for movie posters
+    Value: !Ref PostersBucket
+  MoviesTableName:
+    Description: DynamoDB movies table
+    Value: !Ref MoviesTable
