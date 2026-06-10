@@ -100,6 +100,15 @@ aws s3 rm s3://cinemax-posters-<account-id> --recursive
 sam delete
 ```
 
+## 📱 Tải ứng dụng
+
+| | |
+|---|---|
+| **Tải trực tiếp (APK)** | [⬇️ Cinemax.apk](https://github.com/nguyenwoong20/Cinemax-Serverless-AWS/raw/main/apk/Cinemax.apk) (~55 MB, Android) |
+| **Xem trong repo** | [apk/Cinemax.apk](apk/Cinemax.apk) |
+
+> Cài đặt: tải APK về điện thoại Android → mở file → cho phép "Cài đặt từ nguồn không xác định" nếu được hỏi. Mở app là duyệt phim ngay — toàn bộ dữ liệu phục vụ từ AWS.
+
 ## Repo liên quan
 
 - 📱 [Cinemax-Flutter-App](https://github.com/nguyenwoong20/Cinemax-Flutter-App) — ứng dụng Flutter
