@@ -105,6 +105,27 @@ Resources:
             Path: /users/{userId}/bookmarks/{movieId}
             Method: DELETE
 
+  SyncFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cinemax-sync
+      Handler: src/handlers/sync.handler
+      Description: Nightly sync of new/updated movies from phimapi.com into DynamoDB + S3
+      Timeout: 300
+      MemorySize: 512
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref MoviesTable
+        - S3CrudPolicy:
+            BucketName: !Sub cinemax-posters-${AWS::AccountId}
+      Events:
+        Nightly:
+          Type: Schedule
+          Properties:
+            Name: cinemax-nightly-sync
+            Description: Run movie sync at 02:00 Vietnam time (19:00 UTC)
+            Schedule: cron(0 19 * * ? *)
+
   AuthFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -174,9 +195,51 @@ Resources:
       AttributeDefinitions:
         - AttributeName: email
           AttributeType: S
+        - AttributeName: id
+          AttributeType: S
       KeySchema:
         - AttributeName: email
           KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: id-index
+          KeySchema:
+            - AttributeName: id
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  RoomsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-rooms
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: roomCode
+          AttributeType: S
+      KeySchema:
+        - AttributeName: roomCode
+          KeyType: HASH
+
+  ConnectionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-connections
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: connectionId
+          AttributeType: S
+        - AttributeName: roomCode
+          AttributeType: S
+      KeySchema:
+        - AttributeName: connectionId
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: room-index
+          KeySchema:
+            - AttributeName: roomCode
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
 
   BookmarksTable:
     Type: AWS::DynamoDB::Table
@@ -193,6 +256,113 @@ Resources:
           KeyType: HASH
         - AttributeName: movieId
           KeyType: RANGE
+
+  WatchRoomsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cinemax-watchrooms
+      Handler: src/handlers/watchrooms.handler
+      Description: Watch room REST API (create, list, join, leave, close)
+      Environment:
+        Variables:
+          ROOMS_TABLE: !Ref RoomsTable
+          USERS_TABLE: !Ref UsersTable
+          JWT_SECRET: !Ref JwtSecret
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref RoomsTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref UsersTable
+      Events:
+        ListRooms:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/watch-rooms
+            Method: GET
+        CreateRoom:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/watch-rooms
+            Method: POST
+        RoomRoutes:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/watch-rooms/{proxy+}
+            Method: ANY
+
+  # ---------- WebSocket (watch room realtime sync) ----------
+  WatchRoomWebSocket:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: cinemax-watchroom-ws
+      ProtocolType: WEBSOCKET
+      RouteSelectionExpression: $request.body.action
+
+  WsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: cinemax-watchroom-ws
+      Handler: src/handlers/watchroom-ws.handler
+      Description: Realtime watch room sync (join, play/pause/seek, episode change)
+      Environment:
+        Variables:
+          ROOMS_TABLE: !Ref RoomsTable
+          CONNECTIONS_TABLE: !Ref ConnectionsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref RoomsTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ConnectionsTable
+        - Statement:
+            - Effect: Allow
+              Action: execute-api:ManageConnections
+              Resource: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${WatchRoomWebSocket}/*
+
+  WsPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref WsFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${WatchRoomWebSocket}/*
+
+  WsIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref WatchRoomWebSocket
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${WsFunction.Arn}/invocations
+
+  WsConnectRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref WatchRoomWebSocket
+      RouteKey: $connect
+      Target: !Sub integrations/${WsIntegration}
+
+  WsDisconnectRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref WatchRoomWebSocket
+      RouteKey: $disconnect
+      Target: !Sub integrations/${WsIntegration}
+
+  WsDefaultRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref WatchRoomWebSocket
+      RouteKey: $default
+      Target: !Sub integrations/${WsIntegration}
+
+  WsStage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId: !Ref WatchRoomWebSocket
+      StageName: prod
+      AutoDeploy: true
 
   # ---------- S3 (movie posters) ----------
   PostersBucket:
@@ -244,6 +414,9 @@ Outputs:
   ApiUrl:
     Description: Base URL of the Cinemax API
     Value: !Sub https://${CinemaxApi}.execute-api.${AWS::Region}.amazonaws.com/prod
+  WebSocketUrl:
+    Description: Watch room realtime WebSocket endpoint
+    Value: !Sub wss://${WatchRoomWebSocket}.execute-api.${AWS::Region}.amazonaws.com/prod
   PostersBucketName:
     Description: S3 bucket for movie posters
     Value: !Ref PostersBucket
