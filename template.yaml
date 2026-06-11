@@ -180,6 +180,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref UsersTable
+        - S3CrudPolicy:
+            BucketName: !Sub cinemax-posters-${AWS::AccountId}
       Events:
         AuthRoutes:
           Type: Api
@@ -187,6 +189,12 @@ Resources:
             RestApiId: !Ref CinemaxApi
             Path: /api/auth/{proxy+}
             Method: POST
+        UserRoutes:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/user/{proxy+}
+            Method: PUT
 
   # ---------- DynamoDB ----------
   MoviesTable:

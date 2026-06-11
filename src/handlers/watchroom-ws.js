@@ -210,7 +210,7 @@ exports.handler = async (event) => {
 
       case 'close-room': {
         await updateRoomState(roomCode, { isActive: false });
-        await broadcast(mgmt, roomCode, { event: 'room-closed', message: 'Host closed the room' });
+        await broadcast(mgmt, roomCode, { event: 'room-closed', message: 'Chủ phòng đã đóng phòng xem chung' });
         break;
       }
 

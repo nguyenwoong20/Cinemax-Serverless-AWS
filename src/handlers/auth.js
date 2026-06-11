@@ -67,9 +67,15 @@ const authPayload = (user) => ({
 
 exports.handler = async (event) => {
   const route = (event.pathParameters && event.pathParameters.proxy) || '';
-  console.log('Request:', event.httpMethod, '/api/auth/' + route);
+  console.log('Request:', event.httpMethod, event.path);
 
   try {
+    // PUT /api/user/{userId} — profile update (name, avatar, password)
+    if ((event.path || '').startsWith('/api/user/')) {
+      if (event.httpMethod !== 'PUT') return response(405, { success: false, message: 'Method not allowed' });
+      return updateUser(event, route);
+    }
+
     if (event.httpMethod !== 'POST') return response(405, { success: false, message: 'Method not allowed' });
     const body = JSON.parse(event.body || '{}');
 
@@ -88,6 +94,89 @@ exports.handler = async (event) => {
     return response(500, { success: false, message: 'Internal server error' });
   }
 };
+
+// PUT /api/user/{userId} {name?, avatar?, password?}
+// - Google accounts have no password -> changing it is rejected
+// - avatar may be a data-URI (base64) -> stored on S3, or a plain URL
+async function updateUser(event, userId) {
+  const header = (event.headers && (event.headers.Authorization || event.headers.authorization)) || '';
+  const token = header.replace(/^Bearer\s+/i, '');
+  let authId;
+  try {
+    authId = jwt.verify(token, JWT_SECRET).authID;
+  } catch {
+    return response(401, { success: false, message: 'Chưa đăng nhập' });
+  }
+  if (authId !== userId) return response(403, { success: false, message: 'Không có quyền' });
+
+  const found = await db.send(new (require('@aws-sdk/lib-dynamodb').QueryCommand)({
+    TableName: TABLE,
+    IndexName: 'id-index',
+    KeyConditionExpression: 'id = :i',
+    ExpressionAttributeValues: { ':i': userId },
+    Limit: 1,
+  }));
+  const user = found.Items && found.Items[0];
+  if (!user) return response(404, { success: false, message: 'User not found' });
+
+  const body = JSON.parse(event.body || '{}');
+  const sets = [];
+  const values = {};
+  const names = {};
+
+  if (body.name && body.name.trim()) {
+    sets.push('#nm = :n');
+    names['#nm'] = 'name';
+    values[':n'] = body.name.trim();
+    user.name = values[':n'];
+  }
+
+  if (body.password) {
+    if (user.provider === 'google') {
+      return response(400, { success: false, message: 'Tài khoản Google không dùng mật khẩu' });
+    }
+    if (body.password.length < 6) {
+      return response(400, { success: false, message: 'Mật khẩu phải từ 6 ký tự' });
+    }
+    sets.push('password = :p');
+    values[':p'] = await bcrypt.hash(body.password, 10);
+  }
+
+  if (body.avatar) {
+    let avatarUrl = body.avatar;
+    const dataUri = /^data:(image\/\w+);base64,(.+)$/s.exec(body.avatar);
+    if (dataUri) {
+      const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+      const s3 = new S3Client({});
+      const bucket = process.env.POSTERS_BUCKET;
+      const ext = dataUri[1] === 'image/png' ? 'png' : 'jpg';
+      const key = `posters/avatars-${userId}.${ext}`;
+      await s3.send(new PutObjectCommand({
+        Bucket: bucket,
+        Key: key,
+        Body: Buffer.from(dataUri[2], 'base64'),
+        ContentType: dataUri[1],
+        CacheControl: 'no-cache',
+      }));
+      avatarUrl = `https://${bucket}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+    }
+    sets.push('avatar = :a');
+    values[':a'] = avatarUrl;
+    user.avatar = avatarUrl;
+  }
+
+  if (sets.length === 0) return response(400, { success: false, message: 'Không có gì để cập nhật' });
+
+  await db.send(new UpdateCommand({
+    TableName: TABLE,
+    Key: { email: user.email },
+    UpdateExpression: 'SET ' + sets.join(', '),
+    ...(Object.keys(names).length ? { ExpressionAttributeNames: names } : {}),
+    ExpressionAttributeValues: values,
+  }));
+
+  return response(200, { success: true, message: 'Cập nhật thành công', user: authPayload(user) });
+}
 
 async function register({ name, email, password }) {
   if (!email || !password) return response(400, { success: false, message: 'Email and password are required' });

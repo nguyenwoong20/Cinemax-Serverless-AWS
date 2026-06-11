@@ -25,7 +25,7 @@ const TABLE = process.env.MOVIES_TABLE;
 
 // Small attributes used for list cards (the big `doc` is only fetched for detail)
 const LIST_ATTRS =
-  'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, #tp, episodeCurrent, quality, lang, #tm, categoryNames, countryNames, createdAt, rating, votes';
+  'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, #tp, episodeCurrent, quality, lang, #tm, categoryNames, countryNames, categorySlugs, countrySlugs, createdAt, rating, votes';
 const LIST_NAMES = { '#nm': 'name', '#yr': 'year', '#tm': 'time', '#tp': 'type' };
 
 const response = (statusCode, body) => ({
@@ -126,6 +126,43 @@ exports.handler = async (event) => {
         filter: `contains(${attr}, :s)`,
         values: { ':s': seg2 || '' },
       });
+      return response(200, { success: true, data: paginate(items, params).map(toCard) });
+    }
+
+    // /api/movies/filter?category=&country=&type=&year=&yearFrom=&yearTo=&lang=&sort=&page=&limit=
+    // Generic multi-criteria filter, like the kkphim website filter bar.
+    if (seg1 === 'filter') {
+      let items = await scanAll();
+
+      if (params.category) {
+        items = items.filter((m) => (m.categorySlugs || '').includes(params.category));
+      }
+      if (params.country) {
+        items = items.filter((m) => (m.countrySlugs || '').includes(params.country));
+      }
+      if (params.type) items = items.filter((m) => m.type === params.type);
+      if (params.year) items = items.filter((m) => m.year === parseInt(params.year, 10));
+      if (params.yearFrom) items = items.filter((m) => (m.year || 0) >= parseInt(params.yearFrom, 10));
+      if (params.yearTo) items = items.filter((m) => (m.year || 0) <= parseInt(params.yearTo, 10));
+      if (params.lang) {
+        const q = params.lang.toLowerCase();
+        items = items.filter((m) => (m.lang || '').toLowerCase().includes(q));
+      }
+
+      switch (params.sort) {
+        case 'rating':
+          items.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+          break;
+        case 'votes':
+          items.sort((a, b) => (b.votes || 0) - (a.votes || 0));
+          break;
+        case 'year':
+          items.sort((a, b) => (b.year || 0) - (a.year || 0));
+          break;
+        default: // newest first (createdAt) — already sorted by scanAll
+          break;
+      }
+
       return response(200, { success: true, data: paginate(items, params).map(toCard) });
     }
 
