@@ -54,6 +54,7 @@ function toCard(item) {
     episode_current: item.episodeCurrent || '',
     quality: item.quality || '',
     lang: item.lang || '',
+    rating: item.rating || 0,
     category: (item.categoryNames || []).map((name) => ({ name })),
     country: (item.countryNames || []).map((name) => ({ name })),
   };

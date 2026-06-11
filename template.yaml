@@ -108,6 +108,8 @@ Resources:
             TableName: !Ref CommentsTable
         - DynamoDBReadPolicy:
             TableName: !Ref UsersTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref MoviesTable
       Events:
         BookmarksRoot:
           Type: Api

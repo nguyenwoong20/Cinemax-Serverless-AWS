@@ -28,7 +28,47 @@ const BOOKMARKS = process.env.BOOKMARKS_TABLE;
 const SAVED = process.env.SAVED_TABLE;
 const COMMENTS = process.env.COMMENTS_TABLE;
 const USERS = process.env.USERS_TABLE;
+const MOVIES = process.env.MOVIES_TABLE;
 const JWT_SECRET = process.env.JWT_SECRET;
+
+// Tra thông tin phim theo slug, trả về JSON theo format cũ mà app parse được
+async function movieCardBySlug(slug) {
+  try {
+    const result = await db.send(new QueryCommand({
+      TableName: MOVIES,
+      IndexName: 'slug-index',
+      KeyConditionExpression: 'slug = :s',
+      ExpressionAttributeValues: { ':s': slug },
+      ProjectionExpression:
+        'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, #tp, episodeCurrent, quality, lang, categoryNames, rating',
+      ExpressionAttributeNames: { '#nm': 'name', '#yr': 'year', '#tp': 'type' },
+      Limit: 1,
+    }));
+    const m = result.Items && result.Items[0];
+    if (!m) return null;
+    return {
+      _id: m.id,
+      name: m.name || '',
+      slug: m.slug || '',
+      origin_name: m.originName || '',
+      content: '',
+      type: m.type || '',
+      status: '',
+      year: m.year || 0,
+      poster_url: m.posterUrl || '',
+      thumb_url: m.thumbUrl || '',
+      time: '',
+      episode_current: m.episodeCurrent || '',
+      quality: m.quality || '',
+      lang: m.lang || '',
+      rating: m.rating || 0,
+      category: (m.categoryNames || []).map((name) => ({ name })),
+      country: [],
+    };
+  } catch {
+    return null;
+  }
+}
 
 const response = (statusCode, body) => ({
   statusCode,
@@ -167,9 +207,15 @@ async function savedMovies(event, method, parts) {
       KeyConditionExpression: 'userId = :u',
       ExpressionAttributeValues: { ':u': authId },
     }));
-    const items = (result.Items || [])
-      .sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''))
-      .map((s) => ({ _id: s.movieSlug, movieSlug: s.movieSlug, createdAt: s.createdAt }));
+    const sorted = (result.Items || [])
+      .sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+    // Kèm thông tin phim (tên, poster, điểm...) để app hiển thị đầy đủ
+    const items = await Promise.all(sorted.map(async (s) => ({
+      _id: s.movieSlug,
+      movieSlug: s.movieSlug,
+      createdAt: s.createdAt,
+      movie: await movieCardBySlug(s.movieSlug),
+    })));
     return response(200, { success: true, data: items });
   }
 
