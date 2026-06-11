@@ -9,6 +9,11 @@ Parameters:
     Type: String
     NoEcho: true
     Description: Secret for signing JWT tokens
+  TmdbApiKey:
+    Type: String
+    NoEcho: true
+    Default: ''
+    Description: TMDB API key for real actor photos (optional)
   EmailUser:
     Type: String
     Default: ''
@@ -58,10 +63,16 @@ Resources:
     Properties:
       FunctionName: cinemax-movies
       Handler: src/handlers/movies.handler
-      Description: CRUD for movies (list, get, search, create, update, delete)
+      Description: Movie catalog API (list, detail, search with kkphim fallback, on-demand ingest)
+      Timeout: 20
+      Environment:
+        Variables:
+          TMDB_API_KEY: !Ref TmdbApiKey
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref MoviesTable
+        - S3CrudPolicy:
+            BucketName: !Sub cinemax-posters-${AWS::AccountId}
       Events:
         ListMovies:
           Type: Api
