@@ -58,6 +58,8 @@ function toMovieItem(doc) {
     categorySlugs: categories.map((c) => c.slug).filter(Boolean).join(','),
     countrySlugs: countries.map((c) => c.slug).filter(Boolean).join(','),
     category: (categories[0] && categories[0].slug) || 'uncategorized',
+    rating: (doc.tmdb && doc.tmdb.vote_average) || 0,
+    votes: (doc.tmdb && doc.tmdb.vote_count) || 0,
     createdAt: (doc.created && doc.created.time) || new Date().toISOString(),
     modifiedAt: (doc.modified && doc.modified.time) || new Date().toISOString(),
     doc: compact(clean(doc)),

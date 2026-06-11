@@ -25,7 +25,7 @@ const TABLE = process.env.MOVIES_TABLE;
 
 // Small attributes used for list cards (the big `doc` is only fetched for detail)
 const LIST_ATTRS =
-  'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, #tp, episodeCurrent, quality, lang, #tm, categoryNames, countryNames, createdAt';
+  'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, #tp, episodeCurrent, quality, lang, #tm, categoryNames, countryNames, createdAt, rating, votes';
 const LIST_NAMES = { '#nm': 'name', '#yr': 'year', '#tm': 'time', '#tp': 'type' };
 
 const response = (statusCode, body) => ({
@@ -127,6 +127,20 @@ exports.handler = async (event) => {
         values: { ':s': seg2 || '' },
       });
       return response(200, { success: true, data: paginate(items, params).map(toCard) });
+    }
+
+    if (seg1 === 'hot') {
+      // "Hot" = recent movies ranked by TMDB audience score (rating × popularity)
+      const items = await scanAll();
+      const currentYear = new Date().getFullYear();
+      const hot = items
+        .filter((m) => (m.year || 0) >= currentYear - 1 && (m.votes || 0) > 0)
+        .sort((a, b) => {
+          const score = (m) => (m.rating || 0) * Math.log10((m.votes || 0) + 1);
+          return score(b) - score(a);
+        });
+      const limit = Math.min(parseInt(params.limit || '12', 10) || 12, 50);
+      return response(200, { success: true, data: hot.slice(0, limit).map(toCard) });
     }
 
     if (seg1 === 'type') {
