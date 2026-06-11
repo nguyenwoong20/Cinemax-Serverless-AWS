@@ -87,34 +87,58 @@ Resources:
             Path: /api/movies/{proxy+}
             Method: ANY
 
-  BookmarksFunction:
+  SocialFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: cinemax-bookmarks
-      Handler: src/handlers/bookmarks.handler
-      Description: User bookmarks (list, add, remove)
+      FunctionName: cinemax-social
+      Handler: src/handlers/social.handler
+      Description: Bookmarks, saved movies and comments (with profanity filter)
+      Environment:
+        Variables:
+          SAVED_TABLE: !Ref SavedTable
+          COMMENTS_TABLE: !Ref CommentsTable
+          USERS_TABLE: !Ref UsersTable
+          JWT_SECRET: !Ref JwtSecret
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref BookmarksTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SavedTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CommentsTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref UsersTable
       Events:
-        ListBookmarks:
+        BookmarksRoot:
           Type: Api
           Properties:
             RestApiId: !Ref CinemaxApi
-            Path: /users/{userId}/bookmarks
-            Method: GET
-        AddBookmark:
+            Path: /api/bookmarks
+            Method: ANY
+        BookmarksRoutes:
           Type: Api
           Properties:
             RestApiId: !Ref CinemaxApi
-            Path: /users/{userId}/bookmarks
-            Method: POST
-        RemoveBookmark:
+            Path: /api/bookmarks/{proxy+}
+            Method: ANY
+        SavedRoot:
           Type: Api
           Properties:
             RestApiId: !Ref CinemaxApi
-            Path: /users/{userId}/bookmarks/{movieId}
-            Method: DELETE
+            Path: /api/saved-movies
+            Method: ANY
+        SavedRoutes:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/saved-movies/{proxy+}
+            Method: ANY
+        CommentsRoutes:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CinemaxApi
+            Path: /api/comments/{proxy+}
+            Method: ANY
 
   SyncFunction:
     Type: AWS::Serverless::Function
@@ -218,6 +242,38 @@ Resources:
               KeyType: HASH
           Projection:
             ProjectionType: ALL
+
+  SavedTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-saved
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: movieSlug
+          AttributeType: S
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+        - AttributeName: movieSlug
+          KeyType: RANGE
+
+  CommentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: cinemax-comments
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: movieId
+          AttributeType: S
+        - AttributeName: _id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: movieId
+          KeyType: HASH
+        - AttributeName: _id
+          KeyType: RANGE
 
   RoomsTable:
     Type: AWS::DynamoDB::Table
