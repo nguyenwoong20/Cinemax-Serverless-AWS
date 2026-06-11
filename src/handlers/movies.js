@@ -167,17 +167,36 @@ exports.handler = async (event) => {
     }
 
     if (seg1 === 'hot') {
-      // "Hot" = recent movies ranked by TMDB audience score (rating × popularity)
+      // "Hot" = recent movies ranked by TMDB audience score (rating × popularity).
+      // The pick rotates DAILY: a date-seeded shuffle of the hot pool, so every
+      // day shows a different hot line-up; newly-hot movies join the pool automatically.
       const items = await scanAll();
       const currentYear = new Date().getFullYear();
-      const hot = items
+      const pool = items
         .filter((m) => (m.year || 0) >= currentYear - 1 && (m.votes || 0) > 0)
         .sort((a, b) => {
           const score = (m) => (m.rating || 0) * Math.log10((m.votes || 0) + 1);
           return score(b) - score(a);
-        });
+        })
+        .slice(0, 50); // only genuinely hot titles enter the rotation
+
+      // day number in Vietnam time (UTC+7) -> same line-up all day, new one at midnight
+      const daySeed = Math.floor((Date.now() + 7 * 3600 * 1000) / 86400000);
+      let state = daySeed;
+      const rand = () => {
+        // mulberry32 PRNG — deterministic for the whole day
+        state |= 0; state = (state + 0x6D2B79F5) | 0;
+        let t = Math.imul(state ^ (state >>> 15), 1 | state);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+
       const limit = Math.min(parseInt(params.limit || '12', 10) || 12, 50);
-      return response(200, { success: true, data: hot.slice(0, limit).map(toCard) });
+      return response(200, { success: true, data: pool.slice(0, limit).map(toCard) });
     }
 
     if (seg1 === 'type') {
