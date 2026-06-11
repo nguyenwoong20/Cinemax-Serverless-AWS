@@ -18,8 +18,8 @@ const TABLE = process.env.MOVIES_TABLE;
 
 // Small attributes used for list cards (the big `doc` is only fetched for detail)
 const LIST_ATTRS =
-  'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, episodeCurrent, quality, lang, #tm, categoryNames, countryNames, createdAt';
-const LIST_NAMES = { '#nm': 'name', '#yr': 'year', '#tm': 'time' };
+  'id, slug, #nm, originName, posterUrl, thumbUrl, #yr, #tp, episodeCurrent, quality, lang, #tm, categoryNames, countryNames, createdAt';
+const LIST_NAMES = { '#nm': 'name', '#yr': 'year', '#tm': 'time', '#tp': 'type' };
 
 const response = (statusCode, body) => ({
   statusCode,
@@ -38,7 +38,7 @@ function toCard(item) {
     slug: item.slug || '',
     origin_name: item.originName || '',
     content: '',
-    type: '',
+    type: item.type || '',
     status: '',
     year: item.year || 0,
     poster_url: item.posterUrl || '',
@@ -111,6 +111,15 @@ exports.handler = async (event) => {
       const attr = seg1 === 'category' ? 'categorySlugs' : 'countrySlugs';
       const items = await scanAll({
         filter: `contains(${attr}, :s)`,
+        values: { ':s': seg2 || '' },
+      });
+      return response(200, { success: true, data: paginate(items, params).map(toCard) });
+    }
+
+    if (seg1 === 'type') {
+      // single | series | hoathinh | tvshows
+      const items = await scanAll({
+        filter: '#tp = :s',
         values: { ':s': seg2 || '' },
       });
       return response(200, { success: true, data: paginate(items, params).map(toCard) });

@@ -48,6 +48,7 @@ function toMovieItem(doc) {
     posterUrl: doc.poster_url || '',
     thumbUrl: doc.thumb_url || '',
     year: doc.year || 0,
+    type: doc.type || '',
     time: doc.time || '',
     episodeCurrent: doc.episode_current || '',
     quality: doc.quality || '',
