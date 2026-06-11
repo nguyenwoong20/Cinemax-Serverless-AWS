@@ -193,7 +193,7 @@ async function getCast(slug) {
   try {
     const kind = tmdb.type === 'tv' ? 'tv' : 'movie';
     const res = await fetch(
-      `https://api.themoviedb.org/3/${kind}/${tmdb.id}/credits?api_key=${KEY}&language=vi-VN`,
+      `https://api.themoviedb.org/3/${kind}/${tmdb.id}/credits?api_key=${KEY}&language=en-US`,
       { signal: AbortSignal.timeout(6000) },
     );
     if (!res.ok) return response(200, { success: true, data: [] });
