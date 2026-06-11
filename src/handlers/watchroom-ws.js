@@ -174,16 +174,21 @@ exports.handler = async (event) => {
       }
 
       case 'episode-change': {
+        // the Flutter app sends serverIndex/episodeIndex
+        const server = msg.serverIndex ?? msg.currentServer ?? 0;
+        const episode = msg.episodeIndex ?? msg.currentEpisode ?? 0;
         await updateRoomState(roomCode, {
-          currentServer: msg.currentServer || 0,
-          currentEpisode: msg.currentEpisode || 0,
+          currentServer: server,
+          currentEpisode: episode,
           currentTime: 0,
           isPlaying: false,
         });
         await broadcast(mgmt, roomCode, {
           event: 'episode-change',
-          currentServer: msg.currentServer || 0,
-          currentEpisode: msg.currentEpisode || 0,
+          serverIndex: server,
+          episodeIndex: episode,
+          currentServer: server,
+          currentEpisode: episode,
           triggeredBy: msg.userId,
         }, connectionId);
         break;
