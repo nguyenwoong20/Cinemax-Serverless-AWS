@@ -10,9 +10,15 @@ const [CLOUD, REGION, USERS, APIGW, LAMBDA, , , DDB, , , S3, CW] = hrefs;
 
 const lambda = (y, name, d1, d2) => `
   <image href="${LAMBDA}" x="520" y="${y}" width="56" height="56"/>
+  <line x1="576" y1="${y + 28}" x2="584" y2="${y + 28}" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="${y + 18}" font-size="11" font-weight="bold" fill="#232f3e">${name}</text>
   <text x="592" y="${y + 32}" font-size="9" fill="#555">${d1}</text>
   ${d2 ? `<text x="592" y="${y + 44}" font-size="9" fill="#555">${d2}</text>` : ''}`;
+
+const external = (y, h, color, title, sub) => `
+  <rect x="1095" y="${y}" width="195" height="${h}" fill="#fff" stroke="${color}" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1192" y="${y + 21}" text-anchor="middle" font-size="11.5" font-weight="bold" fill="${color}">${title}</text>
+  <text x="1192" y="${y + 37}" text-anchor="middle" font-size="9.5" fill="#555">${sub}</text>`;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 940" font-family="Segoe UI, Arial, sans-serif">
   <defs>
@@ -27,12 +33,12 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 940" font
   <text x="660" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#232f3e">Cinemax — Full Serverless Architecture on AWS</text>
 
   <!-- AWS Cloud frame -->
-  <rect x="195" y="52" width="1100" height="800" fill="none" stroke="#232f3e" stroke-width="1.6"/>
+  <rect x="195" y="52" width="865" height="800" fill="none" stroke="#232f3e" stroke-width="1.6"/>
   <image href="${CLOUD}" x="195" y="52" width="34" height="34"/>
   <text x="237" y="74" font-size="13.5" font-weight="bold" fill="#232f3e">AWS Cloud</text>
 
   <!-- Region -->
-  <rect x="225" y="105" width="1040" height="715" fill="none" stroke="#147EBA" stroke-width="1.3" stroke-dasharray="7 4"/>
+  <rect x="225" y="105" width="805" height="715" fill="none" stroke="#147EBA" stroke-width="1.3" stroke-dasharray="7 4"/>
   <image href="${REGION}" x="225" y="105" width="26" height="26"/>
   <text x="259" y="123" font-size="12.5" font-weight="bold" fill="#147EBA">ap-southeast-1 (Singapore)</text>
 
@@ -58,9 +64,9 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 940" font
   ${lambda(338, 'cinemax-social', 'bookmarks · saved · comments', 'profanity filter (lọc từ nhạy cảm)')}
   ${lambda(438, 'cinemax-watchrooms', 'tạo / vào / đóng phòng (REST)', '')}
   ${lambda(528, 'cinemax-watchroom-ws', 'sync play/pause/seek · đổi tập', '')}
-  ${lambda(658, 'cinemax-sync', 'phim mới mỗi đêm từ kkphim', 'backup poster về S3')}
+  ${lambda(658, 'cinemax-sync', 'phim mới mỗi đêm từ kkphim', '')}
 
-  <!-- EventBridge (vẽ theo phong cách icon chính chủ) -->
+  <!-- EventBridge -->
   <rect x="300" y="656" width="56" height="56" rx="6" fill="#E7157B"/>
   <circle cx="328" cy="684" r="13" fill="none" stroke="#fff" stroke-width="2"/>
   <path d="M 328 676 v 8 l 5 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
@@ -69,71 +75,78 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 940" font
   <text x="328" y="743" text-anchor="middle" font-size="9.5" fill="#555">cron 02:00 hằng đêm</text>
 
   <!-- DynamoDB -->
-  <image href="${DDB}" x="850" y="160" width="60" height="60"/>
-  <text x="942" y="175" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon DynamoDB — 7 bảng</text>
-  <text x="942" y="191" font-size="9.5" fill="#555">movies (GSI: slug, category) · users (PK: email)</text>
-  <text x="942" y="204" font-size="9.5" fill="#555">bookmarks · saved-movies · comments</text>
-  <text x="942" y="217" font-size="9.5" fill="#555">rooms · connections (WebSocket)</text>
+  <image href="${DDB}" x="800" y="150" width="60" height="60"/>
+  <text x="870" y="160" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon DynamoDB</text>
+  <text x="870" y="175" font-size="10" font-weight="bold" fill="#555">7 bảng · on-demand</text>
+  <text x="870" y="191" font-size="9" fill="#555">movies (GSI: slug, category)</text>
+  <text x="870" y="204" font-size="9" fill="#555">users · bookmarks · saved</text>
+  <text x="870" y="217" font-size="9" fill="#555">comments · rooms · connections</text>
 
   <!-- S3 -->
-  <image href="${S3}" x="850" y="325" width="60" height="60"/>
-  <text x="942" y="345" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon S3</text>
-  <text x="942" y="361" font-size="9.5" fill="#555">500+ poster &amp; thumbnail · avatar người dùng</text>
-  <text x="942" y="374" font-size="9.5" fill="#555">public read: posters/* only</text>
+  <image href="${S3}" x="800" y="320" width="60" height="60"/>
+  <text x="870" y="338" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon S3</text>
+  <text x="870" y="354" font-size="9" fill="#555">500+ poster &amp; thumbnail</text>
+  <text x="870" y="367" font-size="9" fill="#555">avatar người dùng</text>
+  <text x="870" y="380" font-size="9" fill="#555">public read: posters/* only</text>
 
   <!-- CloudWatch -->
-  <image href="${CW}" x="850" y="465" width="60" height="60"/>
-  <text x="942" y="488" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon CloudWatch</text>
-  <text x="942" y="504" font-size="9.5" fill="#555">logs của 6 Lambda · metrics · 5XX alarm</text>
+  <image href="${CW}" x="800" y="465" width="60" height="60"/>
+  <text x="870" y="486" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon CloudWatch</text>
+  <text x="870" y="502" font-size="9" fill="#555">logs của 6 Lambda</text>
+  <text x="870" y="515" font-size="9" fill="#555">metrics · 5XX alarm</text>
 
-  <!-- External services -->
-  <rect x="1080" y="640" width="178" height="54" fill="#fff" stroke="#C7511F" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1169" y="662" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#C7511F">kkphim API (phimapi.com)</text>
-  <text x="1169" y="678" text-anchor="middle" font-size="9.5" fill="#555">nguồn phim · tìm kiếm · chi tiết</text>
+  <!-- External services (ngoài AWS Cloud) -->
+  ${external(596, 52, '#0d253f', 'TMDB API', 'ảnh diễn viên · điểm rating')}
+  ${external(668, 54, '#C7511F', 'kkphim API (phimapi.com)', 'nguồn phim · tìm kiếm · chi tiết')}
+  ${external(742, 52, '#D93025', 'Gmail SMTP', 'email OTP xác minh')}
 
-  <rect x="1080" y="712" width="178" height="48" fill="#fff" stroke="#0d253f" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1169" y="732" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0d253f">TMDB API</text>
-  <text x="1169" y="747" text-anchor="middle" font-size="9.5" fill="#555">ảnh diễn viên · điểm rating</text>
+  <!-- ===== Arrows ===== -->
+  <!-- client -> REST GW (vào cạnh trái icon, không đè chữ) -->
+  <polyline points="116,318 240,318 240,262 276,262" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)"/>
+  <text x="150" y="310" font-size="9.5" fill="#555">HTTPS / JSON</text>
+  <!-- client <-> WS GW -->
+  <polyline points="116,344 252,344 252,526 276,526" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)" marker-start="url(#ah)"/>
+  <text x="150" y="430" font-size="9.5" fill="#555">wss (xem chung)</text>
 
-  <rect x="1080" y="778" width="178" height="48" fill="#fff" stroke="#D93025" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1169" y="798" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#D93025">Gmail SMTP</text>
-  <text x="1169" y="813" text-anchor="middle" font-size="9.5" fill="#555">email OTP xác minh</text>
-
-  <!-- Arrows -->
-  <polyline points="116,318 310,318 310,228" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)"/>
-  <text x="170" y="310" font-size="9.5" fill="#555">HTTPS / JSON</text>
-  <polyline points="116,344 250,344 250,526 276,526" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)" marker-start="url(#ah)"/>
-  <text x="150" y="424" font-size="9.5" fill="#555">wss (xem chung)</text>
-
+  <!-- REST GW -> 4 lambdas -->
   <path d="M 340 250 L 515 170" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
   <line x1="340" y1="262" x2="515" y2="264" stroke="#232f3e" stroke-width="1.3" marker-end="url(#ah)"/>
   <path d="M 340 274 L 515 360" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
   <path d="M 340 284 L 515 458" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
+  <!-- WS GW <-> ws lambda -->
   <line x1="340" y1="528" x2="515" y2="550" stroke="#232f3e" stroke-width="1.3" marker-end="url(#ah)" marker-start="url(#ah)"/>
 
-  <polyline points="576,162 800,162 800,184 845,184" fill="none" stroke="#232f3e" stroke-width="1.2" marker-end="url(#ah)"/>
-  <polyline points="576,262 800,262 800,200" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,362 800,362 800,228" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,462 800,462 800,386" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,552 800,552 800,486" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,682 800,682 800,584" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <!-- lambdas -> dynamodb (bus x=760) -->
+  <polyline points="576,158 760,158 760,176 795,176" fill="none" stroke="#232f3e" stroke-width="1.2" marker-end="url(#ah)"/>
+  <polyline points="576,250 760,250 760,194" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,350 760,350 760,254" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,450 760,450 760,386" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,540 760,540 760,486" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,670 760,670 760,576" fill="none" stroke="#232f3e" stroke-width="1.2"/>
 
-  <polyline points="818,326 845,350" fill="none" stroke="#7AA116" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahg)"/>
-  <text x="775" y="318" font-size="9" fill="#7AA116">poster · avatar</text>
+  <!-- auth/sync -> S3 -->
+  <polyline points="778,318 795,342" fill="none" stroke="#7AA116" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahg)"/>
+  <text x="726" y="312" font-size="9" fill="#7AA116">poster · avatar</text>
 
+  <!-- logs: gom từ cột Lambda (đường gân x=584) -> CloudWatch -->
+  <polyline points="584,166 584,608 830,608 830,529" fill="none" stroke="#E7157B" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ahp)"/>
+  <text x="640" y="601" font-size="9" fill="#E7157B">logs từ tất cả Lambda</text>
+
+  <!-- EventBridge -> sync -->
   <line x1="356" y1="684" x2="515" y2="684" stroke="#E7157B" stroke-width="1.4" marker-end="url(#ahp)"/>
   <text x="432" y="676" text-anchor="middle" font-size="9.5" fill="#E7157B">trigger</text>
 
-  <polyline points="576,696 1040,696 1040,667 1075,667" fill="none" stroke="#C7511F" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
-  <text x="828" y="689" font-size="9" fill="#C7511F">lấy phim mới · tìm kiếm fallback</text>
+  <!-- sync & movies -> kkphim (thẳng hàng) -->
+  <line x1="576" y1="694" x2="1090" y2="694" stroke="#C7511F" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
+  <text x="800" y="687" font-size="9" fill="#C7511F">lấy phim mới · tìm kiếm fallback</text>
 
-  <polyline points="648,186 668,186 668,618 1060,618 1060,736 1075,736" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <!-- movies -> TMDB -->
+  <polyline points="660,150 680,150 680,128 1075,128 1075,622 1090,622" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <text x="985" y="121" font-size="9" fill="#0d253f">cast · rating</text>
 
-  <polyline points="548,294 548,318 492,318 492,802 1075,802" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
-  <text x="700" y="795" font-size="9" fill="#D93025">send OTP</text>
-
-  <polyline points="700,608 880,608 880,529" fill="none" stroke="#E7157B" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ahp)"/>
-  <text x="742" y="601" font-size="9" fill="#E7157B">logs từ tất cả Lambda</text>
+  <!-- auth -> gmail -->
+  <polyline points="548,294 548,316 494,316 494,768 1090,768" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
+  <text x="700" y="761" font-size="9" fill="#D93025">send OTP</text>
 </svg>
 `;
 

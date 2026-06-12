@@ -11,12 +11,12 @@
   <text x="660" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#232f3e">Cinemax — Full Serverless Architecture on AWS</text>
 
   <!-- AWS Cloud frame -->
-  <rect x="195" y="52" width="1100" height="800" fill="none" stroke="#232f3e" stroke-width="1.6"/>
+  <rect x="195" y="52" width="865" height="800" fill="none" stroke="#232f3e" stroke-width="1.6"/>
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLUdyb3VwLzMyL0FXUy1DbG91ZC1sb2dvXzMyPC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMyNDJmM2UiIGQ9Ik0wIDBoNDB2NDBIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMzIuNjk4IDIzLjljLjM2MS40Ny0uNCAyLjQtLjc0IDMuMjY0LS4xMDUuMjYyLjExNy4zNjUuMzUuMTY4IDEuNTEyLTEuMjg0IDEuOTA0LTMuOTc1IDEuNTkzLTQuMzYzLS4zMDctLjM4Ni0yLjk1LS43MTctNC41NjMuNDMyLS4yNDkuMTc3LS4yMDYuNDIuMDcuMzg5LjkwNy0uMTEyIDIuOTMtLjM1NyAzLjI5LjExbS0uODQyIDIuMDFjLjUxOC0uMzc4LjA3NC0uOTQxLS40NTQtLjcyLTMuNTEzIDEuNDY0LTcuMzI3IDIuMTczLTEwLjggMi4xNzMtNS4xNDMgMC0xMC4xMjctMS4zOS0xNC4xNTYtMy42OTUtLjM1Mi0uMjAyLS42MTMuMTU1LS4zMTkuNDE0IDMuNzMzIDMuMzE2IDguNjcgNS4zMDkgMTQuMTQ3IDUuMzA5IDMuOTEgMCA4LjQ1MS0xLjIwOCAxMS41ODItMy40ODFtLTIuMTQ0LTUuMjE1YTYuNiA2LjYgMCAwIDEtMS40NTktLjE2MXEtLjcxNC0uMTYzLTEuMDkzLS4zNzMtLjIzMy0uMTI4LS4yOS0uMjU4YS43LjcgMCAwIDEtLjA1OS0uMjZ2LS40N3EwLS4yOS4yMTYtLjI5Mi4wODMuMDAyLjE3My4wMzMuMDkxLjAzNC4yNDEuMDk4LjQ4LjIxIDEuMDQ0LjMyNC41NjQuMTEzIDEuMTI2LjExMy44OTUgMCAxLjM4NC0uMzA4YS45Ny45NyAwIDAgMCAuNDktLjg3My44OC44OCAwIDAgMC0uMjU4LS42NXEtLjI1Ni0uMjU4LS45NTItLjQ4NGwtMS4zNzUtLjQyMXEtMS4wNDUtLjMyNS0xLjUxNy0uOTM4YTIuMTcgMi4xNyAwIDAgMS0uNDcyLTEuMzQ3cTAtLjU4MS4yNTgtMS4wMjcuMjU1LS40NDUuNjc2LS43NjEuNDI3LS4zMTQuOTktLjQ3OEE0LjMgNC4zIDAgMCAxIDMwLjAyNSAxMnEuMzE1IDAgLjY0LjA0YTYuMyA2LjMgMCAwIDEgMS4xNS4yNTJxLjI0OC4wODIuNC4xNjJhLjkuOSAwIDAgMSAuMjguMjI3LjUuNSAwIDAgMSAuMDgzLjMwOHYuNDM2cTAgLjI5MS0uMjE3LjI5LS4xMTQuMDAyLS4zNjQtLjExMWMtLjU0LS4yNC0xLjE1LS4zNTYtMS44Mi0uMzU2cS0uODE1IDAtMS4yNjIuMjU4LS40NDguMjYtLjQ0OC44MjcgMCAuMzg4LjI4My42NTUuMjgxLjI2NyAxLjA0NC41MWwxLjM0Mi40MjNxMS4wMjguMzIyIDEuNDY2Ljg4OC40NDEuNTY4LjQ0MSAxLjI5NSAwIC42LS4yNSAxLjA3OC0uMjQ4LjQ3Ny0uNjg5LjgxN2EzLjEgMy4xIDAgMCAxLTEuMDUuNTE4cS0uNjE1LjE3OS0xLjM0My4xNzhtLTEyLjE2NS0uMjQ0cS0uMjQ4LjAwMi0uMzY1LS4wODctLjExNy0uMDktLjE5OS0uMzY1bC0yLjIyMi03LjE1N2ExLjggMS44IDAgMCAxLS4wODItLjM3MXEwLS4yMjcuMjMzLS4yMjdoLjkyN3EuMjY1IDAgLjM3NC4wOS4xMDYuMDg2LjE5LjM2NGwxLjU5IDYuMTIgMS40NzctNi4xMnEuMDY2LS4yNzguMTgxLS4zNjQuMTE2LS4wOS4zOC0uMDloLjc2NXEuMjYzIDAgLjM4LjA5LjExNi4wODYuMTgyLjM2NGwxLjQ5MyA2LjIgMS42NC02LjJxLjA4Mi0uMjc4LjE5LS4zNjQuMTA5LS4wOS4zNzMtLjA5aC44NzhxLjIzMyAwIC4yMzMuMjI3YTEgMSAwIDAgMS0uMDE2LjE0NCAyIDIgMCAwIDEtLjA2OC4yMjdsLTIuMjg2IDcuMTU3cS0uMDgzLjI3NS0uMi4zNjUtLjExNi4wODgtLjM2NC4wODdoLS44MTNxLS4yNjQuMDAxLS4zOC0uMDk0LS4xMTYtLjA5OS0uMTgyLS4zNzNsLTEuNDc2LTUuOTYtMS40NTcgNS45NnEtLjA2Ny4yNzQtLjE4My4zNzMtLjExNi4wOTUtLjM4LjA5NHpNOS45NCAxOS40NDlxLjQ2NSAwIC45OC0uMTcuNTEzLS4xNy44OTMtLjU5Mi4yMzItLjI1OS4zMjQtLjU5MS4wOS0uMzMuMDktLjgwMXYtLjM4OGE4IDggMCAwIDAtMS43NTctLjIxMXEtLjk0NSAwLTEuNDA4LjM3My0uNDY0LjM3LS40NjUgMS4wNyAwIC42NDUuMzUuOTc4LjM0Ny4zMzIuOTkzLjMzMm0zLjg0Ni0xLjQwOHEwIC41MTcuMTA3LjgyNS4xMS4zMS4zMDcuNjY0YS40LjQgMCAwIDEgLjA2Ni4yMDlxMCAuMTQ4LS4xODIuMjc2bC0uNTk3LjM5YS41LjUgMCAwIDEtLjI0OC4wOC40LjQgMCAwIDEtLjI4Mi0uMTI4IDIgMiAwIDAgMS0uMzM5LS40MyA2IDYgMCAwIDEtLjI5LS41NDRxLTEuMTEyIDEuMjgtMi43ODUgMS4yOC0xLjE5NC4wMDEtMS44OS0uNjY0LS42OTYtLjY2NC0uNjk2LTEuNzggMC0xLjE4Mi44NjMtMS45MDMuODYtLjcyIDIuMzItLjcyMS40OCAwIDEuMDAyLjA3M3QxLjA4NC4yMDN2LS42OHEuMDAxLTEuMDUyLS40NDYtMS40ODItLjQ0Ni0uNDI4LTEuNTQtLjQyOGE0LjUgNC41IDAgMCAwLTEuMDIuMTIgNy41IDcuNSAwIDAgMC0xLjAyLjMxNSAzIDMgMCAwIDEtLjMzLjEyMi43LjcgMCAwIDEtLjE1LjAyNHEtLjE5OS4wMDEtLjItLjI5MnYtLjQ1MnEuMDAxLS4yMjguMDY4LS4zMjMuMDY2LS4wOTkuMjY1LS4xOTVhNiA2IDAgMCAxIDEuMTkyLS40MjEgNiA2IDAgMCAxIDEuNDc2LS4xOGMxLjEyNiAwIDEuOTUyLjI1NCAyLjQ3Ny43NTRxLjc4Ny43NTMuNzg4IDIuMjc1eiIvPjwvZz48L3N2Zz4=" x="195" y="52" width="34" height="34"/>
   <text x="237" y="74" font-size="13.5" font-weight="bold" fill="#232f3e">AWS Cloud</text>
 
   <!-- Region -->
-  <rect x="225" y="105" width="1040" height="715" fill="none" stroke="#147EBA" stroke-width="1.3" stroke-dasharray="7 4"/>
+  <rect x="225" y="105" width="805" height="715" fill="none" stroke="#147EBA" stroke-width="1.3" stroke-dasharray="7 4"/>
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLUdyb3VwLzMyL1JlZ2lvbl8zMjwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMDBhNGE2IiBkPSJNMCAwaDQwdjQwSDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0IDIwLjAyNnYtOWgxNS4yOTNsLTQuMTQ3IDQuMTQ2YS41LjUgMCAwIDAgMCAuNzA4bDQuMTQ3IDQuMTQ2em0xMi4yMDctNC41IDQuNjQ3LTQuNjQ2YS41LjUgMCAwIDAtLjM1NC0uODU0SDE0VjguOTdBMS41MjggMS41MjggMCAwIDAgMTMuNDk1IDZjLS44NDUgMC0xLjUzMi42ODctMS41MzIgMS41MzEgMCAuNjcuNDM1IDEuMjM1IDEuMDM3IDEuNDQydjI0LjA1M2gtM3YxaDd2LTFoLTN2LTEyaDE2LjVhLjUuNSAwIDAgMCAuMzU0LS44NTR6Ii8+PC9nPjwvc3ZnPg==" x="225" y="105" width="26" height="26"/>
   <text x="259" y="123" font-size="12.5" font-weight="bold" fill="#147EBA">ap-southeast-1 (Singapore)</text>
 
@@ -39,36 +39,42 @@
   <!-- Lambdas -->
   
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="520" y="138" width="56" height="56"/>
+  <line x1="576" y1="166" x2="584" y2="166" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="156" font-size="11" font-weight="bold" fill="#232f3e">cinemax-movies</text>
   <text x="592" y="170" font-size="9" fill="#555">catalog · search · filter · hot · cast</text>
   <text x="592" y="182" font-size="9" fill="#555">on-demand ingest (kho tự lớn)</text>
   
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="520" y="238" width="56" height="56"/>
+  <line x1="576" y1="266" x2="584" y2="266" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="256" font-size="11" font-weight="bold" fill="#232f3e">cinemax-auth</text>
   <text x="592" y="270" font-size="9" fill="#555">register · OTP · login · Google · JWT</text>
   <text x="592" y="282" font-size="9" fill="#555">profile · avatar lên S3</text>
   
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="520" y="338" width="56" height="56"/>
+  <line x1="576" y1="366" x2="584" y2="366" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="356" font-size="11" font-weight="bold" fill="#232f3e">cinemax-social</text>
   <text x="592" y="370" font-size="9" fill="#555">bookmarks · saved · comments</text>
   <text x="592" y="382" font-size="9" fill="#555">profanity filter (lọc từ nhạy cảm)</text>
   
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="520" y="438" width="56" height="56"/>
+  <line x1="576" y1="466" x2="584" y2="466" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="456" font-size="11" font-weight="bold" fill="#232f3e">cinemax-watchrooms</text>
   <text x="592" y="470" font-size="9" fill="#555">tạo / vào / đóng phòng (REST)</text>
   
   
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="520" y="528" width="56" height="56"/>
+  <line x1="576" y1="556" x2="584" y2="556" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="546" font-size="11" font-weight="bold" fill="#232f3e">cinemax-watchroom-ws</text>
   <text x="592" y="560" font-size="9" fill="#555">sync play/pause/seek · đổi tập</text>
   
   
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="520" y="658" width="56" height="56"/>
+  <line x1="576" y1="686" x2="584" y2="686" stroke="#E7157B" stroke-width="1" stroke-dasharray="2 2"/>
   <text x="592" y="676" font-size="11" font-weight="bold" fill="#232f3e">cinemax-sync</text>
   <text x="592" y="690" font-size="9" fill="#555">phim mới mỗi đêm từ kkphim</text>
-  <text x="592" y="702" font-size="9" fill="#555">backup poster về S3</text>
+  
 
-  <!-- EventBridge (vẽ theo phong cách icon chính chủ) -->
+  <!-- EventBridge -->
   <rect x="300" y="656" width="56" height="56" rx="6" fill="#E7157B"/>
   <circle cx="328" cy="684" r="13" fill="none" stroke="#fff" stroke-width="2"/>
   <path d="M 328 676 v 8 l 5 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
@@ -77,69 +83,85 @@
   <text x="328" y="743" text-anchor="middle" font-size="9.5" fill="#555">cron 02:00 hằng đêm</text>
 
   <!-- DynamoDB -->
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUR5bmFtb0RCXzQ4PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNjOTI1ZDEiIGQ9Ik0wIDBoNjR2NjRIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDYuNTg2IDI1LjI1SDQzYTEgMSAwIDAgMS0uODIyLS40MzUgMS4wMiAxLjAyIDAgMCAxLS4xMTQtLjkzMWwyLjQ5My02LjcyMmgtOC45MTNsLTQuMDkxIDkuMDk4SDM2Yy4zMiAwIC42MjMuMTU2LjgxMi40Mi4xODcuMjY0LjIzOS42MDIuMTM2LjkxbC0zLjY2IDExLjEwMXptMy4xMi0uMjk3TDMxLjcwOSA0My4xNWEuOTkuOTkgMCAwIDEtMS4yMzIuMTQ2IDEuMDE0IDEuMDE0IDAgMCAxLS40MjMtMS4xOGw0LjU2LTEzLjgzM0gzMGExIDEgMCAwIDEtLjg0MS0uNDYzIDEuMDIgMS4wMiAwIDAgMS0uMDctLjk2Nmw1LTExLjEyYTEgMSAwIDAgMSAuOTEtLjU5M2gxMWMuMzI5IDAgLjYzNi4xNjMuODIzLjQzNS4xODcuMjczLjIzLjYyLjExNS45MzFsLTIuNDk0IDYuNzIxSDQ5YTEgMSAwIDAgMSAuOTI0LjYyNGMuMTU1LjM3OC4wNjkuODEzLS4yMTcgMS4xMDJNNDEuMDAyIDQ0LjIyYy0yLjcxIDEuODg2LTcuNjg3IDIuODgyLTEyLjQ2OCAyLjg4Mi00LjgxNiAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0bC4wMDEgMy44MTZjMCAxLjY2NCA0Ljc2OCAzLjk4NCAxMi41MzIgMy45ODQgNy40OTUgMCAxMi40NjgtMi43MDIgMTIuNDY4LTQuNDl6bTIuMDY0LTMuMjdjMCAuMTg3LS4wMzIuMzY3LS4wNjQuNTQ2djUuOTkzQzQzIDUxLjA3OSAzNi41MSA1NCAyOC41MzMgNTRjLTYuOTAzIDAtMTMuODcxLTEuODktMTQuNDczLTUuNWgtLjA1OUwxNCA0My40NDVWMTYuMTUxaC4wMDFjMC0zLjk5NiA3LjQ4Ny02LjE1MSAxNC41MzItNi4xNTEgMy45NCAwIDcuNzMuNjQgMTAuMzk3IDEuNzU2bC0uNzY2IDEuODY4Yy0yLjQzMi0xLjAxOS01Ljk0My0xLjYwMi05LjYzMS0xLjYwMi03Ljc2NCAwLTEyLjUzMiAyLjQwNS0xMi41MzIgNC4xMyAwIDEuNzI0IDQuNzY4IDQuMTI5IDEyLjUzMiA0LjEyOS4xOTUgMCAuMzk5IDAgLjU5Ni0uMDA3bC4wNzggMi4wMmMtLjIyNS4wMDktLjQ1LjAwOS0uNjc0LjAwOS00LjgxNyAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0djQuMzU4aC4wMDF2LjAxN2MuMDA1LjUzLjQ4OSAxLjE0MyAxLjM2NCAxLjcyIDEuOTgyIDEuMjg4IDUuNTUgMi4xNjggOS41MzkgMi4zNTFsLS4wOTEgMi4wMmMtNC4xMjYtLjE5LTcuNzUtMS4wNjktMTAuMDg2LTIuNDE2LS4zMS4yOTgtLjcyNiAxLjA1Ni0uNzI2IDEuNDY3IDAgMS43MjQgNC43NjggNC4xMjkgMTIuNTMyIDQuMTI5LjczOCAwIDEuNDY1LS4wMjUgMi4xNjItLjA3NWwuMTQgMi4wMTdjLS43NDMuMDU0LTEuNTE4LjA4LTIuMzAyLjA4LTQuODE3IDAtOS44MzctMS4wMDktMTIuNTMzLTIuOTI0djMuNjdoLjAwMWMuMDA1LjU0Ny40ODkgMS4xNiAxLjM2NCAxLjczNyAyLjI2OCAxLjQ3NCA2LjU0OSAyLjM5MyAxMS4xNjggMi4zOTNoLjMzdjIuMDIyaC0uMzNjLTQuNzc4IDAtOS44Ni0xLjAwOC0xMi41MzItMi41NDMtLjMyMi4yOTggMCAxLjAxIDAgMS41NDggMCAxLjcyNSA0Ljc2OCA0LjEzIDEyLjUzMiA0LjEzczEyLjUzMi0yLjQwNSAxMi41MzItNC4xM2MwLS42MS0uNi0xLjE3NC0xLjA5Mi0xLjUzOC0uNDEuMjQ3LS44Ni40ODMtMS4zNzIuN2wtLjc2OC0xLjg2OGMuNTMtLjIyMy45OS0uNDYzIDEuMzY0LS43MTEgMS4xLS43MzQgMS44MDQtMS43NzkgMS44MDQtMi4xNzVoMmMwIC45NC0uNjIxIDEuOTQ3LTEuNDE3IDIuNzc1IDEuMTkyIDEuMDQgMS40OCAyLjA3OCAxLjQ4IDIuODE3TTE3LjE0MiA0OC4zOWMuNzkxLjQwOCAxLjcxNi43NzIgMi43NTIgMS4wOGwuNTY0LTEuOTRhMTQgMTQgMCAwIDEtMi40MDYtLjk0em0yLjc1Mi0xMS4wNS41NjQtMS45NGMtLjkxNi0uMjcyLTEuNzI2LS41ODktMi40MDYtLjk0bC0uOTEgMS43OTljLjc5MS40MSAxLjcxNi43NzIgMi43NTIgMS4wOG0tMi43NTItMTMuMjEuOTEtMS44MDFjLjY4LjM1MiAxLjQ5LjY2OCAyLjQwNi45NGwtLjU2NCAxLjk0YTE2IDE2IDAgMCAxLTIuNzUyLTEuMDgiLz48L2c+PC9zdmc+" x="850" y="160" width="60" height="60"/>
-  <text x="942" y="175" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon DynamoDB — 7 bảng</text>
-  <text x="942" y="191" font-size="9.5" fill="#555">movies (GSI: slug, category) · users (PK: email)</text>
-  <text x="942" y="204" font-size="9.5" fill="#555">bookmarks · saved-movies · comments</text>
-  <text x="942" y="217" font-size="9.5" fill="#555">rooms · connections (WebSocket)</text>
+  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUR5bmFtb0RCXzQ4PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNjOTI1ZDEiIGQ9Ik0wIDBoNjR2NjRIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDYuNTg2IDI1LjI1SDQzYTEgMSAwIDAgMS0uODIyLS40MzUgMS4wMiAxLjAyIDAgMCAxLS4xMTQtLjkzMWwyLjQ5My02LjcyMmgtOC45MTNsLTQuMDkxIDkuMDk4SDM2Yy4zMiAwIC42MjMuMTU2LjgxMi40Mi4xODcuMjY0LjIzOS42MDIuMTM2LjkxbC0zLjY2IDExLjEwMXptMy4xMi0uMjk3TDMxLjcwOSA0My4xNWEuOTkuOTkgMCAwIDEtMS4yMzIuMTQ2IDEuMDE0IDEuMDE0IDAgMCAxLS40MjMtMS4xOGw0LjU2LTEzLjgzM0gzMGExIDEgMCAwIDEtLjg0MS0uNDYzIDEuMDIgMS4wMiAwIDAgMS0uMDctLjk2Nmw1LTExLjEyYTEgMSAwIDAgMSAuOTEtLjU5M2gxMWMuMzI5IDAgLjYzNi4xNjMuODIzLjQzNS4xODcuMjczLjIzLjYyLjExNS45MzFsLTIuNDk0IDYuNzIxSDQ5YTEgMSAwIDAgMSAuOTI0LjYyNGMuMTU1LjM3OC4wNjkuODEzLS4yMTcgMS4xMDJNNDEuMDAyIDQ0LjIyYy0yLjcxIDEuODg2LTcuNjg3IDIuODgyLTEyLjQ2OCAyLjg4Mi00LjgxNiAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0bC4wMDEgMy44MTZjMCAxLjY2NCA0Ljc2OCAzLjk4NCAxMi41MzIgMy45ODQgNy40OTUgMCAxMi40NjgtMi43MDIgMTIuNDY4LTQuNDl6bTIuMDY0LTMuMjdjMCAuMTg3LS4wMzIuMzY3LS4wNjQuNTQ2djUuOTkzQzQzIDUxLjA3OSAzNi41MSA1NCAyOC41MzMgNTRjLTYuOTAzIDAtMTMuODcxLTEuODktMTQuNDczLTUuNWgtLjA1OUwxNCA0My40NDVWMTYuMTUxaC4wMDFjMC0zLjk5NiA3LjQ4Ny02LjE1MSAxNC41MzItNi4xNTEgMy45NCAwIDcuNzMuNjQgMTAuMzk3IDEuNzU2bC0uNzY2IDEuODY4Yy0yLjQzMi0xLjAxOS01Ljk0My0xLjYwMi05LjYzMS0xLjYwMi03Ljc2NCAwLTEyLjUzMiAyLjQwNS0xMi41MzIgNC4xMyAwIDEuNzI0IDQuNzY4IDQuMTI5IDEyLjUzMiA0LjEyOS4xOTUgMCAuMzk5IDAgLjU5Ni0uMDA3bC4wNzggMi4wMmMtLjIyNS4wMDktLjQ1LjAwOS0uNjc0LjAwOS00LjgxNyAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0djQuMzU4aC4wMDF2LjAxN2MuMDA1LjUzLjQ4OSAxLjE0MyAxLjM2NCAxLjcyIDEuOTgyIDEuMjg4IDUuNTUgMi4xNjggOS41MzkgMi4zNTFsLS4wOTEgMi4wMmMtNC4xMjYtLjE5LTcuNzUtMS4wNjktMTAuMDg2LTIuNDE2LS4zMS4yOTgtLjcyNiAxLjA1Ni0uNzI2IDEuNDY3IDAgMS43MjQgNC43NjggNC4xMjkgMTIuNTMyIDQuMTI5LjczOCAwIDEuNDY1LS4wMjUgMi4xNjItLjA3NWwuMTQgMi4wMTdjLS43NDMuMDU0LTEuNTE4LjA4LTIuMzAyLjA4LTQuODE3IDAtOS44MzctMS4wMDktMTIuNTMzLTIuOTI0djMuNjdoLjAwMWMuMDA1LjU0Ny40ODkgMS4xNiAxLjM2NCAxLjczNyAyLjI2OCAxLjQ3NCA2LjU0OSAyLjM5MyAxMS4xNjggMi4zOTNoLjMzdjIuMDIyaC0uMzNjLTQuNzc4IDAtOS44Ni0xLjAwOC0xMi41MzItMi41NDMtLjMyMi4yOTggMCAxLjAxIDAgMS41NDggMCAxLjcyNSA0Ljc2OCA0LjEzIDEyLjUzMiA0LjEzczEyLjUzMi0yLjQwNSAxMi41MzItNC4xM2MwLS42MS0uNi0xLjE3NC0xLjA5Mi0xLjUzOC0uNDEuMjQ3LS44Ni40ODMtMS4zNzIuN2wtLjc2OC0xLjg2OGMuNTMtLjIyMy45OS0uNDYzIDEuMzY0LS43MTEgMS4xLS43MzQgMS44MDQtMS43NzkgMS44MDQtMi4xNzVoMmMwIC45NC0uNjIxIDEuOTQ3LTEuNDE3IDIuNzc1IDEuMTkyIDEuMDQgMS40OCAyLjA3OCAxLjQ4IDIuODE3TTE3LjE0MiA0OC4zOWMuNzkxLjQwOCAxLjcxNi43NzIgMi43NTIgMS4wOGwuNTY0LTEuOTRhMTQgMTQgMCAwIDEtMi40MDYtLjk0em0yLjc1Mi0xMS4wNS41NjQtMS45NGMtLjkxNi0uMjcyLTEuNzI2LS41ODktMi40MDYtLjk0bC0uOTEgMS43OTljLjc5MS40MSAxLjcxNi43NzIgMi43NTIgMS4wOG0tMi43NTItMTMuMjEuOTEtMS44MDFjLjY4LjM1MiAxLjQ5LjY2OCAyLjQwNi45NGwtLjU2NCAxLjk0YTE2IDE2IDAgMCAxLTIuNzUyLTEuMDgiLz48L2c+PC9zdmc+" x="800" y="150" width="60" height="60"/>
+  <text x="870" y="160" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon DynamoDB</text>
+  <text x="870" y="175" font-size="10" font-weight="bold" fill="#555">7 bảng · on-demand</text>
+  <text x="870" y="191" font-size="9" fill="#555">movies (GSI: slug, category)</text>
+  <text x="870" y="204" font-size="9" fill="#555">users · bookmarks · saved</text>
+  <text x="870" y="217" font-size="9" fill="#555">comments · rooms · connections</text>
 
   <!-- S3 -->
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLVNpbXBsZS1TdG9yYWdlLVNlcnZpY2VfNDg8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iIzdhYTExNiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Im00Ny43NTkgMzMuOTQ4LjIzNC0xLjgxN2MyLjE3MyAxLjI1NCAyLjg0OSAxLjk5IDMuMDQ0IDIuMjkzLS4zMjQuMDYxLTEuMjA1LjA4NS0zLjI3OC0uNDc2TTMwLjQ5OSAyMWMtMTAuMzc0IDAtMTcuMTE3LTIuNTEyLTE3LjUtNC4zMDR2LS4xODVjLjM1LTEuMTE5IDYuMTQtNC41MSAxNy41LTQuNTEgMTEuMzQgMCAxNy4xMzMgMy4zOCAxNy41IDQuNTA0di4xMTFDNDcuNzI1IDE4LjQ0NiA0MC45NjIgMjEgMzAuNSAyMW0xNS4zMTkgMTIuMzYyYy00Ljc2NS0xLjU2NS0xMC45MDYtNC4zODMtMTMuMjI0LTUuNDc0YTIuMDkgMi4wOSAwIDAgMC0yLjA4Mi0xLjk4MkEyLjA5NyAyLjA5NyAwIDAgMCAyOC40MTggMjhjMCAxLjE1NC45NCAyLjA5NCAyLjA5NCAyLjA5NC40NTcgMCAuODc3LS4xNTIgMS4yMi0uNCAyLjQgMS4xMjggOC44ODcgNC4xMDQgMTMuODI2IDUuNjg2bC0xLjcyMSAxMy4zNDRDNDMuNTgzIDUwLjM1MiAzOC45MTkgNTIgMzAuNDk3IDUyYy04LjQyNSAwLTEzLjA5Mi0xLjY0OC0xMy4zNDItMy4yNDlsLTMuNzItMjguOTM3QzE2Ljk0NSAyMS45MTUgMjMuNzQ5IDIzIDMwLjUgMjNjNi43NSAwIDEzLjU1NC0xLjA4NSAxNy4wNjUtMy4xODV6TTUwIDE2LjVjMC0zLjA2OS04LjM0LTYuNS0xOS41LTYuNVMxMSAxMy40MzEgMTEgMTYuNXYuNTQzbDQuMTc0IDMxLjk5QzE1Ljg3NCA1My41MTYgMjYuMTIzIDU0IDMwLjQ5NyA1NGM0LjM3MiAwIDE0LjYxNi0uNDg0IDE1LjMyLTQuOTkzbDEuNjg0LTEzLjA2YzEuMjc3LjMzMiAyLjMxLjUxIDMuMTE1LjUwOC45OSAwIDEuNjU3LS4yNTIgMi4wOC0uNzU4LjM1LS40MTYuNDg5LS45NC4zODktMS40NzYtLjIyOC0xLjIyLTEuNjgyLTIuNTA5LTQuNzE1LTQuMTc3bC0uMS0uMDU1TDUwIDE3LjA0NHoiLz48L2c+PC9zdmc+" x="850" y="325" width="60" height="60"/>
-  <text x="942" y="345" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon S3</text>
-  <text x="942" y="361" font-size="9.5" fill="#555">500+ poster &amp; thumbnail · avatar người dùng</text>
-  <text x="942" y="374" font-size="9.5" fill="#555">public read: posters/* only</text>
+  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLVNpbXBsZS1TdG9yYWdlLVNlcnZpY2VfNDg8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iIzdhYTExNiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Im00Ny43NTkgMzMuOTQ4LjIzNC0xLjgxN2MyLjE3MyAxLjI1NCAyLjg0OSAxLjk5IDMuMDQ0IDIuMjkzLS4zMjQuMDYxLTEuMjA1LjA4NS0zLjI3OC0uNDc2TTMwLjQ5OSAyMWMtMTAuMzc0IDAtMTcuMTE3LTIuNTEyLTE3LjUtNC4zMDR2LS4xODVjLjM1LTEuMTE5IDYuMTQtNC41MSAxNy41LTQuNTEgMTEuMzQgMCAxNy4xMzMgMy4zOCAxNy41IDQuNTA0di4xMTFDNDcuNzI1IDE4LjQ0NiA0MC45NjIgMjEgMzAuNSAyMW0xNS4zMTkgMTIuMzYyYy00Ljc2NS0xLjU2NS0xMC45MDYtNC4zODMtMTMuMjI0LTUuNDc0YTIuMDkgMi4wOSAwIDAgMC0yLjA4Mi0xLjk4MkEyLjA5NyAyLjA5NyAwIDAgMCAyOC40MTggMjhjMCAxLjE1NC45NCAyLjA5NCAyLjA5NCAyLjA5NC40NTcgMCAuODc3LS4xNTIgMS4yMi0uNCAyLjQgMS4xMjggOC44ODcgNC4xMDQgMTMuODI2IDUuNjg2bC0xLjcyMSAxMy4zNDRDNDMuNTgzIDUwLjM1MiAzOC45MTkgNTIgMzAuNDk3IDUyYy04LjQyNSAwLTEzLjA5Mi0xLjY0OC0xMy4zNDItMy4yNDlsLTMuNzItMjguOTM3QzE2Ljk0NSAyMS45MTUgMjMuNzQ5IDIzIDMwLjUgMjNjNi43NSAwIDEzLjU1NC0xLjA4NSAxNy4wNjUtMy4xODV6TTUwIDE2LjVjMC0zLjA2OS04LjM0LTYuNS0xOS41LTYuNVMxMSAxMy40MzEgMTEgMTYuNXYuNTQzbDQuMTc0IDMxLjk5QzE1Ljg3NCA1My41MTYgMjYuMTIzIDU0IDMwLjQ5NyA1NGM0LjM3MiAwIDE0LjYxNi0uNDg0IDE1LjMyLTQuOTkzbDEuNjg0LTEzLjA2YzEuMjc3LjMzMiAyLjMxLjUxIDMuMTE1LjUwOC45OSAwIDEuNjU3LS4yNTIgMi4wOC0uNzU4LjM1LS40MTYuNDg5LS45NC4zODktMS40NzYtLjIyOC0xLjIyLTEuNjgyLTIuNTA5LTQuNzE1LTQuMTc3bC0uMS0uMDU1TDUwIDE3LjA0NHoiLz48L2c+PC9zdmc+" x="800" y="320" width="60" height="60"/>
+  <text x="870" y="338" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon S3</text>
+  <text x="870" y="354" font-size="9" fill="#555">500+ poster &amp; thumbnail</text>
+  <text x="870" y="367" font-size="9" fill="#555">avatar người dùng</text>
+  <text x="870" y="380" font-size="9" fill="#555">public read: posters/* only</text>
 
   <!-- CloudWatch -->
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUNsb3VkV2F0Y2hfNDg8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iI2U3MTU3YiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik00Mi4xODQgMzkuMzgxYTQuMDk1IDQuMDk1IDAgMCAwLTguMTg5IDAgNC4wOTUgNC4wOTUgMCAwIDAgOC4xODkgMG0yIDBjMCAzLjM1My0yLjczNCA2LjA4MS02LjA5NSA2LjA4MXMtNi4wOTQtMi43MjgtNi4wOTQtNi4wOGMwLTMuMzU0IDIuNzM0LTYuMDgyIDYuMDk0LTYuMDgyczYuMDk1IDIuNzI4IDYuMDk1IDYuMDgxbTYuNTU5IDEwLjIzNS00Ljg5Ny00LjRhMTAgMTAgMCAwIDEtMS4wNjEgMS4xOWw0Ljg4NiA0LjM5N2EuODA2LjgwNiAwIDAgMCAxLjEzMS0uMDU5LjguOCAwIDAgMC0uMDU5LTEuMTI4bS0xMi42NTQtMi41MjRjNC4yNjIgMCA3LjcyOS0zLjQ2IDcuNzI5LTcuNzEgMC00LjI1Mi0zLjQ2Ny03LjcxMS03LjcyOS03LjcxMS00LjI2IDAtNy43MjcgMy40NTktNy43MjcgNy43MXMzLjQ2NyA3LjcxIDcuNzI3IDcuNzFtMTMuOTkyIDEuMDQyYTIuNzk2IDIuNzk2IDAgMCAxIC4yMDcgMy45NDZjLS41NTMuNjEtMS4zMTcuOTItMi4wODMuOTJhMi44IDIuOCAwIDAgMS0xLjg3Mi0uNzEzbC01LjE2MS00LjY0NmE5LjY3IDkuNjcgMCAwIDEtNS4wODMgMS40NDZjLTUuMzY0IDAtOS43MjctNC4zNTQtOS43MjctOS43MDZzNC4zNjMtOS43MDYgOS43MjctOS43MDZjNS4zNjUgMCA5LjcyOSA0LjM1NCA5LjcyOSA5LjcwNmE5LjYgOS42IDAgMCAxLS45MjEgNC4wOTV6TTE3LjY5NyAyMy41MzhjMCAuNDAxLjAyMy44LjA3IDEuMTg1YS45OTcuOTk3IDAgMCAxLS44MDYgMS4xMDFDMTUuMDg0IDI2LjMwOCAxMiAyNy43NzIgMTIgMzIuMTU3YzAgMy4zMjMgMS44MzYgNS4xNTcgMy4zNzcgNi4xMS42NzIuNDIzIDEuMjYzLjYzOCAxLjc2MS42NDNoOC45ODl2MS45OTZoLTljLS44ODQtLjAxLTEuODI3LS4zMjktMi44MS0uOTQ3QzEyLjcwOCAzOC45NjQgMTAgMzYuNjIgMTAgMzIuMTU3YzAtNS4yNyAzLjUyNi03LjI5MyA1LjcxLTguMDRhMTQgMTQgMCAwIDEtLjAxMy0uNTc5YzAtNC4zNzggMi45NzYtOC45MTYgNi45MjQtMTAuNTYgNC42MTEtMS45MjcgOS40OTgtLjk3MSAxMy4wNjYgMi41NTYgMS4wNDcgMS4wMzMgMS45MTcgMi4yNzQgMi41OTggMy43MDJhNS4zIDUuMyAwIDAgMSAzLjE3NC0xLjA2MWMyLjQxNSAwIDUuMTI4IDEuNzkzIDUuNjYzIDUuNzE1QzUwLjU4IDI0LjcyMiA1NCAyNy4yNzggNTQgMzIuMjE3YzAgMi44OS0xLjEzNiA1LjI0LTMuMjg3IDYuNzkybC0xLjE3Mi0xLjYxNkM1MS4xNzMgMzYuMjE0IDUyIDM0LjQ3MyA1MiAzMi4yMTdjMC00Ljk3OC00LjE4OS02LjIxNy01Ljk5LTYuNTE5YS45OTYuOTk2IDAgMCAxLS44MjQtMS4xMjdjLS4yNTUtMy4wNC0yLjA0NS00LjQwMS0zLjcyNy00LjQwMS0xLjA1NyAwLTIuMDUuNTE2LTIuNzI1IDEuNDE2YS45OTkuOTk5IDAgMCAxLTEuNzQxLS4yNmMtLjYzNC0xLjc1Mi0xLjU0Ny0zLjIyMy0yLjcxMi00LjM3NS0xLjQzLTEuNDExLTUuMzQ4LTQuNDQ0LTEwLjg5LTIuMTMyLTMuMTkzIDEuMzMtNS42OTQgNS4xNi01LjY5NCA4LjcyIi8+PC9nPjwvc3ZnPg==" x="850" y="465" width="60" height="60"/>
-  <text x="942" y="488" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon CloudWatch</text>
-  <text x="942" y="504" font-size="9.5" fill="#555">logs của 6 Lambda · metrics · 5XX alarm</text>
+  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUNsb3VkV2F0Y2hfNDg8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iI2U3MTU3YiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik00Mi4xODQgMzkuMzgxYTQuMDk1IDQuMDk1IDAgMCAwLTguMTg5IDAgNC4wOTUgNC4wOTUgMCAwIDAgOC4xODkgMG0yIDBjMCAzLjM1My0yLjczNCA2LjA4MS02LjA5NSA2LjA4MXMtNi4wOTQtMi43MjgtNi4wOTQtNi4wOGMwLTMuMzU0IDIuNzM0LTYuMDgyIDYuMDk0LTYuMDgyczYuMDk1IDIuNzI4IDYuMDk1IDYuMDgxbTYuNTU5IDEwLjIzNS00Ljg5Ny00LjRhMTAgMTAgMCAwIDEtMS4wNjEgMS4xOWw0Ljg4NiA0LjM5N2EuODA2LjgwNiAwIDAgMCAxLjEzMS0uMDU5LjguOCAwIDAgMC0uMDU5LTEuMTI4bS0xMi42NTQtMi41MjRjNC4yNjIgMCA3LjcyOS0zLjQ2IDcuNzI5LTcuNzEgMC00LjI1Mi0zLjQ2Ny03LjcxMS03LjcyOS03LjcxMS00LjI2IDAtNy43MjcgMy40NTktNy43MjcgNy43MXMzLjQ2NyA3LjcxIDcuNzI3IDcuNzFtMTMuOTkyIDEuMDQyYTIuNzk2IDIuNzk2IDAgMCAxIC4yMDcgMy45NDZjLS41NTMuNjEtMS4zMTcuOTItMi4wODMuOTJhMi44IDIuOCAwIDAgMS0xLjg3Mi0uNzEzbC01LjE2MS00LjY0NmE5LjY3IDkuNjcgMCAwIDEtNS4wODMgMS40NDZjLTUuMzY0IDAtOS43MjctNC4zNTQtOS43MjctOS43MDZzNC4zNjMtOS43MDYgOS43MjctOS43MDZjNS4zNjUgMCA5LjcyOSA0LjM1NCA5LjcyOSA5LjcwNmE5LjYgOS42IDAgMCAxLS45MjEgNC4wOTV6TTE3LjY5NyAyMy41MzhjMCAuNDAxLjAyMy44LjA3IDEuMTg1YS45OTcuOTk3IDAgMCAxLS44MDYgMS4xMDFDMTUuMDg0IDI2LjMwOCAxMiAyNy43NzIgMTIgMzIuMTU3YzAgMy4zMjMgMS44MzYgNS4xNTcgMy4zNzcgNi4xMS42NzIuNDIzIDEuMjYzLjYzOCAxLjc2MS42NDNoOC45ODl2MS45OTZoLTljLS44ODQtLjAxLTEuODI3LS4zMjktMi44MS0uOTQ3QzEyLjcwOCAzOC45NjQgMTAgMzYuNjIgMTAgMzIuMTU3YzAtNS4yNyAzLjUyNi03LjI5MyA1LjcxLTguMDRhMTQgMTQgMCAwIDEtLjAxMy0uNTc5YzAtNC4zNzggMi45NzYtOC45MTYgNi45MjQtMTAuNTYgNC42MTEtMS45MjcgOS40OTgtLjk3MSAxMy4wNjYgMi41NTYgMS4wNDcgMS4wMzMgMS45MTcgMi4yNzQgMi41OTggMy43MDJhNS4zIDUuMyAwIDAgMSAzLjE3NC0xLjA2MWMyLjQxNSAwIDUuMTI4IDEuNzkzIDUuNjYzIDUuNzE1QzUwLjU4IDI0LjcyMiA1NCAyNy4yNzggNTQgMzIuMjE3YzAgMi44OS0xLjEzNiA1LjI0LTMuMjg3IDYuNzkybC0xLjE3Mi0xLjYxNkM1MS4xNzMgMzYuMjE0IDUyIDM0LjQ3MyA1MiAzMi4yMTdjMC00Ljk3OC00LjE4OS02LjIxNy01Ljk5LTYuNTE5YS45OTYuOTk2IDAgMCAxLS44MjQtMS4xMjdjLS4yNTUtMy4wNC0yLjA0NS00LjQwMS0zLjcyNy00LjQwMS0xLjA1NyAwLTIuMDUuNTE2LTIuNzI1IDEuNDE2YS45OTkuOTk5IDAgMCAxLTEuNzQxLS4yNmMtLjYzNC0xLjc1Mi0xLjU0Ny0zLjIyMy0yLjcxMi00LjM3NS0xLjQzLTEuNDExLTUuMzQ4LTQuNDQ0LTEwLjg5LTIuMTMyLTMuMTkzIDEuMzMtNS42OTQgNS4xNi01LjY5NCA4LjcyIi8+PC9nPjwvc3ZnPg==" x="800" y="465" width="60" height="60"/>
+  <text x="870" y="486" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon CloudWatch</text>
+  <text x="870" y="502" font-size="9" fill="#555">logs của 6 Lambda</text>
+  <text x="870" y="515" font-size="9" fill="#555">metrics · 5XX alarm</text>
 
-  <!-- External services -->
-  <rect x="1080" y="640" width="178" height="54" fill="#fff" stroke="#C7511F" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1169" y="662" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#C7511F">kkphim API (phimapi.com)</text>
-  <text x="1169" y="678" text-anchor="middle" font-size="9.5" fill="#555">nguồn phim · tìm kiếm · chi tiết</text>
+  <!-- External services (ngoài AWS Cloud) -->
+  
+  <rect x="1095" y="596" width="195" height="52" fill="#fff" stroke="#0d253f" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1192" y="617" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0d253f">TMDB API</text>
+  <text x="1192" y="633" text-anchor="middle" font-size="9.5" fill="#555">ảnh diễn viên · điểm rating</text>
+  
+  <rect x="1095" y="668" width="195" height="54" fill="#fff" stroke="#C7511F" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1192" y="689" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#C7511F">kkphim API (phimapi.com)</text>
+  <text x="1192" y="705" text-anchor="middle" font-size="9.5" fill="#555">nguồn phim · tìm kiếm · chi tiết</text>
+  
+  <rect x="1095" y="742" width="195" height="52" fill="#fff" stroke="#D93025" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1192" y="763" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#D93025">Gmail SMTP</text>
+  <text x="1192" y="779" text-anchor="middle" font-size="9.5" fill="#555">email OTP xác minh</text>
 
-  <rect x="1080" y="712" width="178" height="48" fill="#fff" stroke="#0d253f" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1169" y="732" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0d253f">TMDB API</text>
-  <text x="1169" y="747" text-anchor="middle" font-size="9.5" fill="#555">ảnh diễn viên · điểm rating</text>
+  <!-- ===== Arrows ===== -->
+  <!-- client -> REST GW (vào cạnh trái icon, không đè chữ) -->
+  <polyline points="116,318 240,318 240,262 276,262" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)"/>
+  <text x="150" y="310" font-size="9.5" fill="#555">HTTPS / JSON</text>
+  <!-- client <-> WS GW -->
+  <polyline points="116,344 252,344 252,526 276,526" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)" marker-start="url(#ah)"/>
+  <text x="150" y="430" font-size="9.5" fill="#555">wss (xem chung)</text>
 
-  <rect x="1080" y="778" width="178" height="48" fill="#fff" stroke="#D93025" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1169" y="798" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#D93025">Gmail SMTP</text>
-  <text x="1169" y="813" text-anchor="middle" font-size="9.5" fill="#555">email OTP xác minh</text>
-
-  <!-- Arrows -->
-  <polyline points="116,318 310,318 310,228" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)"/>
-  <text x="170" y="310" font-size="9.5" fill="#555">HTTPS / JSON</text>
-  <polyline points="116,344 250,344 250,526 276,526" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)" marker-start="url(#ah)"/>
-  <text x="150" y="424" font-size="9.5" fill="#555">wss (xem chung)</text>
-
+  <!-- REST GW -> 4 lambdas -->
   <path d="M 340 250 L 515 170" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
   <line x1="340" y1="262" x2="515" y2="264" stroke="#232f3e" stroke-width="1.3" marker-end="url(#ah)"/>
   <path d="M 340 274 L 515 360" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
   <path d="M 340 284 L 515 458" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
+  <!-- WS GW <-> ws lambda -->
   <line x1="340" y1="528" x2="515" y2="550" stroke="#232f3e" stroke-width="1.3" marker-end="url(#ah)" marker-start="url(#ah)"/>
 
-  <polyline points="576,162 800,162 800,184 845,184" fill="none" stroke="#232f3e" stroke-width="1.2" marker-end="url(#ah)"/>
-  <polyline points="576,262 800,262 800,200" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,362 800,362 800,228" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,462 800,462 800,386" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,552 800,552 800,486" fill="none" stroke="#232f3e" stroke-width="1.2"/>
-  <polyline points="576,682 800,682 800,584" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <!-- lambdas -> dynamodb (bus x=760) -->
+  <polyline points="576,158 760,158 760,176 795,176" fill="none" stroke="#232f3e" stroke-width="1.2" marker-end="url(#ah)"/>
+  <polyline points="576,250 760,250 760,194" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,350 760,350 760,254" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,450 760,450 760,386" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,540 760,540 760,486" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="576,670 760,670 760,576" fill="none" stroke="#232f3e" stroke-width="1.2"/>
 
-  <polyline points="818,326 845,350" fill="none" stroke="#7AA116" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahg)"/>
-  <text x="775" y="318" font-size="9" fill="#7AA116">poster · avatar</text>
+  <!-- auth/sync -> S3 -->
+  <polyline points="778,318 795,342" fill="none" stroke="#7AA116" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahg)"/>
+  <text x="726" y="312" font-size="9" fill="#7AA116">poster · avatar</text>
 
+  <!-- logs: gom từ cột Lambda (đường gân x=584) -> CloudWatch -->
+  <polyline points="584,166 584,608 830,608 830,529" fill="none" stroke="#E7157B" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ahp)"/>
+  <text x="640" y="601" font-size="9" fill="#E7157B">logs từ tất cả Lambda</text>
+
+  <!-- EventBridge -> sync -->
   <line x1="356" y1="684" x2="515" y2="684" stroke="#E7157B" stroke-width="1.4" marker-end="url(#ahp)"/>
   <text x="432" y="676" text-anchor="middle" font-size="9.5" fill="#E7157B">trigger</text>
 
-  <polyline points="576,696 1040,696 1040,667 1075,667" fill="none" stroke="#C7511F" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
-  <text x="828" y="689" font-size="9" fill="#C7511F">lấy phim mới · tìm kiếm fallback</text>
+  <!-- sync & movies -> kkphim (thẳng hàng) -->
+  <line x1="576" y1="694" x2="1090" y2="694" stroke="#C7511F" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
+  <text x="800" y="687" font-size="9" fill="#C7511F">lấy phim mới · tìm kiếm fallback</text>
 
-  <polyline points="648,186 668,186 668,618 1060,618 1060,736 1075,736" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <!-- movies -> TMDB -->
+  <polyline points="660,150 680,150 680,128 1075,128 1075,622 1090,622" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <text x="985" y="121" font-size="9" fill="#0d253f">cast · rating</text>
 
-  <polyline points="548,294 548,318 492,318 492,802 1075,802" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
-  <text x="700" y="795" font-size="9" fill="#D93025">send OTP</text>
-
-  <polyline points="700,608 880,608 880,529" fill="none" stroke="#E7157B" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ahp)"/>
-  <text x="742" y="601" font-size="9" fill="#E7157B">logs từ tất cả Lambda</text>
+  <!-- auth -> gmail -->
+  <polyline points="548,294 548,316 494,316 494,768 1090,768" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
+  <text x="700" y="761" font-size="9" fill="#D93025">send OTP</text>
 </svg>
