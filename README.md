@@ -9,20 +9,18 @@ Backend serverless trên AWS cho ứng dụng xem phim **Cinemax** (Flutter). D�
 ![Architecture](docs/architecture-aws.svg)
 
 ```
-Flutter App ──HTTPS──► Amazon API Gateway (REST)
-                            │
-            ┌───────────────┼────────────────┐
-            ▼               ▼                ▼
-     Lambda: movies   Lambda: auth    Lambda: bookmarks
-            │               │                │
-            ▼               ▼                ▼
-     DynamoDB: movies  DynamoDB: users  DynamoDB: bookmarks
+Flutter App ──HTTPS──► API Gateway (REST)      ──► Lambda: movies / auth / social / watchrooms
+            ──wss────► API Gateway (WebSocket) ──► Lambda: watchroom-ws (xem chung realtime)
 
-     Amazon S3 ── lưu trữ poster phim
-     Amazon CloudWatch ── logs + alarm lỗi 5XX
+EventBridge (cron 2h sáng) ──► Lambda: sync ──► kkphim API (phim mới mỗi đêm)
+
+DynamoDB ×7 bảng: movies · users · bookmarks · saved-movies · comments · rooms · connections
+Amazon S3 ── poster, thumbnail, avatar người dùng
+CloudWatch ── logs của 6 Lambda + alarm lỗi 5XX
+External: kkphim API · TMDB (ảnh diễn viên, điểm) · Gmail SMTP (OTP)
 ```
 
-**5 dịch vụ AWS:** API Gateway · Lambda (Node.js 22, arm64) · DynamoDB (on-demand) · S3 · CloudWatch
+**7 dịch vụ AWS:** API Gateway (REST + WebSocket) · Lambda ×6 (Node.js 22, arm64) · DynamoDB (7 bảng, on-demand) · S3 · EventBridge · CloudWatch · CloudFormation/SAM
 **Infrastructure-as-Code:** toàn bộ hạ tầng định nghĩa trong một file [`template.yaml`](template.yaml) (AWS SAM) — deploy hoặc xóa sạch chỉ với 1 lệnh.
 
 ## Tính năng

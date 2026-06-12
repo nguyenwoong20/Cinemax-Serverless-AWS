@@ -1,147 +1,176 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 860" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 940" font-family="Segoe UI, Arial, sans-serif">
   <defs>
-    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#232f3e"/></marker>
-    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d6242d"/></marker>
-    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7AA116"/></marker>
-    <marker id="ahp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E7157B"/></marker>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#232f3e"/></marker>
+    <marker id="ahp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#E7157B"/></marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D93025"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7AA116"/></marker>
+    <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#C7511F"/></marker>
   </defs>
 
-  <rect width="1240" height="860" fill="#ffffff"/>
-  <text x="620" y="30" text-anchor="middle" font-size="19" font-weight="bold" fill="#232f3e">Cinemax Serverless API — Architecture</text>
+  <rect width="1320" height="940" fill="#ffffff"/>
+  <text x="660" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#232f3e">Cinemax — Full Serverless Architecture on AWS</text>
 
-  <!-- ===== AWS Cloud frame ===== -->
-  <rect x="185" y="55" width="1020" height="690" fill="none" stroke="#232f3e" stroke-width="1.6"/>
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLUdyb3VwLzMyL0FXUy1DbG91ZC1sb2dvXzMyPC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiMyNDJmM2UiIGQ9Ik0wIDBoNDB2NDBIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMzIuNjk4IDIzLjljLjM2MS40Ny0uNCAyLjQtLjc0IDMuMjY0LS4xMDUuMjYyLjExNy4zNjUuMzUuMTY4IDEuNTEyLTEuMjg0IDEuOTA0LTMuOTc1IDEuNTkzLTQuMzYzLS4zMDctLjM4Ni0yLjk1LS43MTctNC41NjMuNDMyLS4yNDkuMTc3LS4yMDYuNDIuMDcuMzg5LjkwNy0uMTEyIDIuOTMtLjM1NyAzLjI5LjExbS0uODQyIDIuMDFjLjUxOC0uMzc4LjA3NC0uOTQxLS40NTQtLjcyLTMuNTEzIDEuNDY0LTcuMzI3IDIuMTczLTEwLjggMi4xNzMtNS4xNDMgMC0xMC4xMjctMS4zOS0xNC4xNTYtMy42OTUtLjM1Mi0uMjAyLS42MTMuMTU1LS4zMTkuNDE0IDMuNzMzIDMuMzE2IDguNjcgNS4zMDkgMTQuMTQ3IDUuMzA5IDMuOTEgMCA4LjQ1MS0xLjIwOCAxMS41ODItMy40ODFtLTIuMTQ0LTUuMjE1YTYuNiA2LjYgMCAwIDEtMS40NTktLjE2MXEtLjcxNC0uMTYzLTEuMDkzLS4zNzMtLjIzMy0uMTI4LS4yOS0uMjU4YS43LjcgMCAwIDEtLjA1OS0uMjZ2LS40N3EwLS4yOS4yMTYtLjI5Mi4wODMuMDAyLjE3My4wMzMuMDkxLjAzNC4yNDEuMDk4LjQ4LjIxIDEuMDQ0LjMyNC41NjQuMTEzIDEuMTI2LjExMy44OTUgMCAxLjM4NC0uMzA4YS45Ny45NyAwIDAgMCAuNDktLjg3My44OC44OCAwIDAgMC0uMjU4LS42NXEtLjI1Ni0uMjU4LS45NTItLjQ4NGwtMS4zNzUtLjQyMXEtMS4wNDUtLjMyNS0xLjUxNy0uOTM4YTIuMTcgMi4xNyAwIDAgMS0uNDcyLTEuMzQ3cTAtLjU4MS4yNTgtMS4wMjcuMjU1LS40NDUuNjc2LS43NjEuNDI3LS4zMTQuOTktLjQ3OEE0LjMgNC4zIDAgMCAxIDMwLjAyNSAxMnEuMzE1IDAgLjY0LjA0YTYuMyA2LjMgMCAwIDEgMS4xNS4yNTJxLjI0OC4wODIuNC4xNjJhLjkuOSAwIDAgMSAuMjguMjI3LjUuNSAwIDAgMSAuMDgzLjMwOHYuNDM2cTAgLjI5MS0uMjE3LjI5LS4xMTQuMDAyLS4zNjQtLjExMWMtLjU0LS4yNC0xLjE1LS4zNTYtMS44Mi0uMzU2cS0uODE1IDAtMS4yNjIuMjU4LS40NDguMjYtLjQ0OC44MjcgMCAuMzg4LjI4My42NTUuMjgxLjI2NyAxLjA0NC41MWwxLjM0Mi40MjNxMS4wMjguMzIyIDEuNDY2Ljg4OC40NDEuNTY4LjQ0MSAxLjI5NSAwIC42LS4yNSAxLjA3OC0uMjQ4LjQ3Ny0uNjg5LjgxN2EzLjEgMy4xIDAgMCAxLTEuMDUuNTE4cS0uNjE1LjE3OS0xLjM0My4xNzhtLTEyLjE2NS0uMjQ0cS0uMjQ4LjAwMi0uMzY1LS4wODctLjExNy0uMDktLjE5OS0uMzY1bC0yLjIyMi03LjE1N2ExLjggMS44IDAgMCAxLS4wODItLjM3MXEwLS4yMjcuMjMzLS4yMjdoLjkyN3EuMjY1IDAgLjM3NC4wOS4xMDYuMDg2LjE5LjM2NGwxLjU5IDYuMTIgMS40NzctNi4xMnEuMDY2LS4yNzguMTgxLS4zNjQuMTE2LS4wOS4zOC0uMDloLjc2NXEuMjYzIDAgLjM4LjA5LjExNi4wODYuMTgyLjM2NGwxLjQ5MyA2LjIgMS42NC02LjJxLjA4Mi0uMjc4LjE5LS4zNjQuMTA5LS4wOS4zNzMtLjA5aC44NzhxLjIzMyAwIC4yMzMuMjI3YTEgMSAwIDAgMS0uMDE2LjE0NCAyIDIgMCAwIDEtLjA2OC4yMjdsLTIuMjg2IDcuMTU3cS0uMDgzLjI3NS0uMi4zNjUtLjExNi4wODgtLjM2NC4wODdoLS44MTNxLS4yNjQuMDAxLS4zOC0uMDk0LS4xMTYtLjA5OS0uMTgyLS4zNzNsLTEuNDc2LTUuOTYtMS40NTcgNS45NnEtLjA2Ny4yNzQtLjE4My4zNzMtLjExNi4wOTUtLjM4LjA5NHpNOS45NCAxOS40NDlxLjQ2NSAwIC45OC0uMTcuNTEzLS4xNy44OTMtLjU5Mi4yMzItLjI1OS4zMjQtLjU5MS4wOS0uMzMuMDktLjgwMXYtLjM4OGE4IDggMCAwIDAtMS43NTctLjIxMXEtLjk0NSAwLTEuNDA4LjM3My0uNDY0LjM3LS40NjUgMS4wNyAwIC42NDUuMzUuOTc4LjM0Ny4zMzIuOTkzLjMzMm0zLjg0Ni0xLjQwOHEwIC41MTcuMTA3LjgyNS4xMS4zMS4zMDcuNjY0YS40LjQgMCAwIDEgLjA2Ni4yMDlxMCAuMTQ4LS4xODIuMjc2bC0uNTk3LjM5YS41LjUgMCAwIDEtLjI0OC4wOC40LjQgMCAwIDEtLjI4Mi0uMTI4IDIgMiAwIDAgMS0uMzM5LS40MyA2IDYgMCAwIDEtLjI5LS41NDRxLTEuMTEyIDEuMjgtMi43ODUgMS4yOC0xLjE5NC4wMDEtMS44OS0uNjY0LS42OTYtLjY2NC0uNjk2LTEuNzggMC0xLjE4Mi44NjMtMS45MDMuODYtLjcyIDIuMzItLjcyMS40OCAwIDEuMDAyLjA3M3QxLjA4NC4yMDN2LS42OHEuMDAxLTEuMDUyLS40NDYtMS40ODItLjQ0Ni0uNDI4LTEuNTQtLjQyOGE0LjUgNC41IDAgMCAwLTEuMDIuMTIgNy41IDcuNSAwIDAgMC0xLjAyLjMxNSAzIDMgMCAwIDEtLjMzLjEyMi43LjcgMCAwIDEtLjE1LjAyNHEtLjE5OS4wMDEtLjItLjI5MnYtLjQ1MnEuMDAxLS4yMjguMDY4LS4zMjMuMDY2LS4wOTkuMjY1LS4xOTVhNiA2IDAgMCAxIDEuMTkyLS40MjEgNiA2IDAgMCAxIDEuNDc2LS4xOGMxLjEyNiAwIDEuOTUyLjI1NCAyLjQ3Ny43NTRxLjc4Ny43NTMuNzg4IDIuMjc1eiIvPjwvZz48L3N2Zz4=" x="185" y="55" width="34" height="34"/>
-  <text x="227" y="77" font-size="13.5" font-weight="bold" fill="#232f3e">AWS Cloud</text>
+  <!-- AWS Cloud frame -->
+  <rect x="195" y="50" width="1100" height="800" fill="none" stroke="#232f3e" stroke-width="1.5"/>
+  <rect x="195" y="50" width="28" height="28" fill="#232f3e"/>
+  <text x="209" y="69" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff">aws</text>
+  <text x="231" y="69" font-size="13" font-weight="bold" fill="#232f3e">AWS Cloud</text>
 
-  <!-- ===== Region frame ===== -->
-  <rect x="225" y="115" width="945" height="590" fill="none" stroke="#147EBA" stroke-width="1.3" stroke-dasharray="7 4"/>
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLUdyb3VwLzMyL1JlZ2lvbl8zMjwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMDBhNGE2IiBkPSJNMCAwaDQwdjQwSDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0IDIwLjAyNnYtOWgxNS4yOTNsLTQuMTQ3IDQuMTQ2YS41LjUgMCAwIDAgMCAuNzA4bDQuMTQ3IDQuMTQ2em0xMi4yMDctNC41IDQuNjQ3LTQuNjQ2YS41LjUgMCAwIDAtLjM1NC0uODU0SDE0VjguOTdBMS41MjggMS41MjggMCAwIDAgMTMuNDk1IDZjLS44NDUgMC0xLjUzMi42ODctMS41MzIgMS41MzEgMCAuNjcuNDM1IDEuMjM1IDEuMDM3IDEuNDQydjI0LjA1M2gtM3YxaDd2LTFoLTN2LTEyaDE2LjVhLjUuNSAwIDAgMCAuMzU0LS44NTR6Ii8+PC9nPjwvc3ZnPg==" x="225" y="115" width="26" height="26"/>
-  <text x="259" y="133" font-size="12.5" font-weight="bold" fill="#147EBA">ap-southeast-1 (Singapore)</text>
+  <!-- Region -->
+  <rect x="225" y="100" width="1040" height="720" fill="none" stroke="#147EBA" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <rect x="225" y="100" width="22" height="22" fill="#147EBA"/>
+  <path d="M 232 105 v 12 M 232 105 h 8 l -2.5 3 l 2.5 3 h -8" stroke="#fff" stroke-width="1.3" fill="none"/>
+  <text x="254" y="116" font-size="12" font-weight="bold" fill="#147EBA">ap-southeast-1 (Singapore)</text>
 
-  <!-- ===== Left: users + client ===== -->
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHRpdGxlPkljb24tUmVzb3VyY2UvR2VuZXJhbC1SZXNvdXJjZS9SZXNfVXNlcnNfNDhfTGlnaHQ8L3RpdGxlPjxwYXRoIGZpbGw9IiMyNDJmM2UiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTI4LjYzOSA5LjI4NmMwLTIuOTE1IDIuNDEzLTUuMjg2IDUuMzgtNS4yODZzNS4zNzggMi4zNzEgNS4zNzggNS4yODYtMi40MTIgNS4yODYtNS4zNzggNS4yODYtNS4zOC0yLjM3MS01LjM4LTUuMjg2bTExLjUyNCA3LjA0OGExMS43IDExLjcgMCAwIDAtMi4wMzUtMS4wMDFjMS45Ny0xLjMxIDMuMjY5LTMuNTMxIDMuMjY5LTYuMDQ3IDAtNC4wMTctMy4zMS03LjI4Ni03LjM3OC03LjI4Ni00LjA2OSAwLTcuMzggMy4yNjktNy4zOCA3LjI4NiAwIDIuNTEgMS4yOTMgNC43MjggMy4yNTYgNi4wMzlhMTEuOSAxMS45IDAgMCAwLTMuNTQ2IDIuMWwxLjMwMyAxLjUxOEE5Ljc3IDkuNzcgMCAwIDEgMzQgMTYuNTcyYzEuODAyIDAgMy41NjkuNTA1IDUuMTA5IDEuNDYxIDIuNzQgMS43MDIgNC41MzggNC42OTIgNC44NDQgNy45NjdIMzR2MmgxMWExIDEgMCAwIDAgMS0xYzAtNC4zNDMtMi4yMzYtOC40My01LjgzNy0xMC42NjZNOC42MzkgOS4yODZDOC42MzkgNi4zNzEgMTEuMDUyIDQgMTQuMDE5IDRzNS4zNzggMi4zNzEgNS4zNzggNS4yODYtMi40MTIgNS4yODYtNS4zNzggNS4yODYtNS4zOC0yLjM3MS01LjM4LTUuMjg2TTE0IDI2SDQuMDQ2QzQuNTMgMjAuNzE3IDguODEgMTYuNTcyIDE0IDE2LjU3MmMxLjgwMiAwIDMuNTY5LjUwNSA1LjEwOSAxLjQ2MS40MzIuMjY5Ljg0OS41NzUgMS4yNC45MWwxLjMwMy0xLjUxN2ExMS43MSAxMS43MSAwIDAgMC0zLjUyNC0yLjA5M2MxLjk3LTEuMzEgMy4yNjktMy41MzEgMy4yNjktNi4wNDcgMC00LjAxNy0zLjMxLTcuMjg2LTcuMzc4LTcuMjg2LTQuMDY5IDAtNy4zOCAzLjI2OS03LjM4IDcuMjg2IDAgMi41MTUgMS4yOTggNC43MzcgMy4yNjggNi4wNDZDNS4zMDIgMTcuMDcxIDIgMjEuNjM4IDIgMjdhMSAxIDAgMCAwIDEgMWgxMXptLjA0NiAxOGMuNDg0LTUuMjgzIDQuNzY0LTkuNDI4IDkuOTU0LTkuNDI4IDEuODAyIDAgMy41NjkuNTA1IDUuMTA5IDEuNDYxIDIuNzQgMS43MDIgNC41MzggNC42OTIgNC44NDQgNy45Njd6bTQuNTkzLTE2LjcxNGMwLTIuOTE1IDIuNDEzLTUuMjg2IDUuMzgtNS4yODZzNS4zNzggMi4zNzEgNS4zNzggNS4yODYtMi40MTIgNS4yODYtNS4zNzggNS4yODYtNS4zOC0yLjM3MS01LjM4LTUuMjg2bTExLjUyNCA3LjA0OGExMS43IDExLjcgMCAwIDAtMi4wMzUtMS4wMDFjMS45Ny0xLjMxIDMuMjY5LTMuNTMxIDMuMjY5LTYuMDQ3IDAtNC4wMTctMy4zMS03LjI4Ni03LjM3OC03LjI4Ni00LjA2OSAwLTcuMzggMy4yNjktNy4zOCA3LjI4NiAwIDIuNTE1IDEuMjk4IDQuNzM3IDMuMjY4IDYuMDQ2QzE1LjMwMiAzNS4wNzEgMTIgMzkuNjM4IDEyIDQ1YTEgMSAwIDAgMCAxIDFoMjJhMSAxIDAgMCAwIDEtMWMwLTQuMzQzLTIuMjM2LTguNDMtNS44MzctMTAuNjY2Ii8+PC9zdmc+" x="60" y="145" width="56" height="56"/>
-  <text x="88" y="218" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">Users</text>
-  
-  
-  <rect x="40" y="375" width="136" height="62" rx="3" fill="#ffffff" stroke="#232f3e" stroke-width="1.4"/>
-  <text x="108" y="401" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#232f3e">Cinemax App</text>
-  <text x="108" y="419" text-anchor="middle" font-size="10.5" fill="#5f6b7a">Flutter · Android</text>
+  <!-- Client -->
+  <rect x="30" y="330" width="130" height="120" fill="#fff" stroke="#232f3e" stroke-width="1.3"/>
+  <circle cx="95" cy="368" r="16" fill="none" stroke="#232f3e" stroke-width="2"/>
+  <path d="M 72 408 a 23 16 0 0 1 46 0" fill="none" stroke="#232f3e" stroke-width="2"/>
+  <text x="95" y="430" text-anchor="middle" font-size="12" font-weight="bold" fill="#232f3e">Cinemax App</text>
+  <text x="95" y="444" text-anchor="middle" font-size="10" fill="#555">(Flutter · Android)</text>
 
-  <!-- ===== API Gateway ===== -->
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHBhdGggZmlsbD0iIzhjNGZmZiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTI4IDQ0aDN2LTJoLTN6bTUgMGgzdi0yaC0zem0tNS0yMmgzdi0yaC0zem01IDBoM3YtMmgtM3ptLTExLTkuMjYtMTAgNS44MzR2MjcuODA4bDEwIDV6TTI0IDIwaDJ2MmgtMnYyMGgydjJoLTJ2OWExIDEgMCAwIDEtMS40NDcuODk1bC0xMi02QTEgMSAwIDAgMSAxMCA0N1YxOGExIDEgMCAwIDEgLjQ5Ni0uODY0bDEyLTdBMS4wMDIgMS4wMDIgMCAwIDEgMjQgMTF6bTI4LTEuNDI2TDQyIDEyLjc0djM4LjY0MWwxMC01ek01NCAxOHYyOWMwIC4zNzktLjIxNC43MjUtLjU1My44OTVsLTEyIDZhMSAxIDAgMCAxLS45NzItLjA0NEExIDEgMCAwIDEgNDAgNTN2LTloLTJ2LTJoMlYyMmgtMnYtMmgydi05YS45OTguOTk4IDAgMCAxIDEuNTA0LS44NjRsMTIgN0ExIDEgMCAwIDEgNTQgMThtLTE5LjA2MSA5LjM0Mi0xLjg3OC0uNjg0LTQgMTEgMS44NzguNjg0em00Ljc2OCA1LjM2NWExIDEgMCAwIDAgMC0xLjQxNGwtMy0zLTEuNDE0IDEuNDE0TDM3LjU4NiAzMmwtMi4yOTMgMi4yOTMgMS40MTQgMS40MTR6bS0xMi40MTQgMy0zLTNhMSAxIDAgMCAxIDAtMS40MTRsMy0zIDEuNDE0IDEuNDE0TDI2LjQxNCAzMmwyLjI5MyAyLjI5M3oiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==" x="305" y="374" width="64" height="64"/>
-  <text x="337" y="455" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon API Gateway</text>
-  <text x="337" y="469" text-anchor="middle" font-size="9.5" fill="#5f6b7a">REST API · stage prod</text>
-  <text x="337" y="481" text-anchor="middle" font-size="9.5" fill="#5f6b7a">CORS enabled</text>
+  <!-- API Gateway REST -->
+  <rect x="280" y="240" width="56" height="56" rx="5" fill="#8C4FFF"/>
+  <path d="M 296 260 l -7 8 l 7 8 M 320 260 l 7 8 l -7 8 M 312 256 l -8 24" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="308" y="312" text-anchor="middle" font-size="11" font-weight="bold" fill="#232f3e">API Gateway</text>
+  <text x="308" y="325" text-anchor="middle" font-size="9.5" fill="#555">REST · /api/*</text>
 
-  <!-- ===== Serverless Compute group ===== -->
-  <rect x="505" y="150" width="225" height="535" rx="4" fill="none" stroke="#ED7100" stroke-width="1.3" stroke-dasharray="6 4"/>
-  <text x="517" y="172" font-size="11.5" font-weight="bold" fill="#ED7100">Serverless Compute</text>
-  <text x="517" y="186" font-size="9.5" fill="#ED7100">Node.js 22 · arm64</text>
+  <!-- API Gateway WebSocket -->
+  <rect x="280" y="500" width="56" height="56" rx="5" fill="#8C4FFF"/>
+  <path d="M 293 528 q 7 -12 15 0 q 8 12 15 0" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <circle cx="293" cy="528" r="2.5" fill="#fff"/><circle cx="323" cy="528" r="2.5" fill="#fff"/>
+  <text x="308" y="572" text-anchor="middle" font-size="11" font-weight="bold" fill="#232f3e">API Gateway</text>
+  <text x="308" y="585" text-anchor="middle" font-size="9.5" fill="#555">WebSocket · realtime</text>
 
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="585" y="205" width="64" height="64"/>
-  <text x="617" y="286" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">AWS Lambda</text>
-  <text x="617" y="300" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-movies</text>
-  <text x="617" y="312" text-anchor="middle" font-size="9.5" fill="#5f6b7a">list · detail · search</text>
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="585" y="374" width="64" height="64"/>
-  <text x="617" y="455" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">AWS Lambda</text>
-  <text x="617" y="469" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-auth</text>
-  <text x="617" y="481" text-anchor="middle" font-size="9.5" fill="#5f6b7a">login · OTP · Google · JWT</text>
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQVdTLUxhbWJkYV80ODwvdGl0bGU+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjZWQ3MTAwIiBkPSJNMCAwaDY0djY0SDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIyLjY4IDUyaC05LjEwNmwxMC4yNjQtMjEuNTkgNC41NjIgOS40NTF6bTIuMDQ3LTI0LjMzM2EuOTkuOTkgMCAwIDAtLjg5Ni0uNTY0aC0uMDAzYS45OS45OSAwIDAgMC0uODk2LjU2OUwxMS4wOTcgNTIuNTY5Yy0uMTQ3LjMxLS4xMjYuNjc0LjA1Ny45NjUuMTgxLjI5LjUuNDY2Ljg0Mi40NjZIMjMuMzFhMSAxIDAgMCAwIC45LS41NzJsNi4xOTQtMTMuMTQ0YTEgMSAwIDAgMC0uMDA1LS44NjR6TTUxLjAwOCA1MmgtOS4wMjJMMjYuOTU1IDE5LjU3OGExIDEgMCAwIDAtLjkwMy0uNTc4aC01LjkyNGwuMDA3LTdoMTEuNjhsMTQuOTYgMzIuNDJjLjE2My4zNTQuNTE2LjU4LjkwNC41OGgzLjMzem0uOTk2LTloLTMuNjlsLTE0Ljk2LTMyLjQyYTEgMSAwIDAgMC0uOTAzLS41OEgxOS4xNGExIDEgMCAwIDAtLjk5Ni45OTlsLS4wMDggOUEuOTkzLjk5MyAwIDAgMCAxOS4xMzEgMjFoNi4yODZsMTUuMDMgMzIuNDIyYTEgMSAwIDAgMCAuOTAzLjU3OGgxMC42NTRjLjU1IDAgLjk5Ni0uNDQ4Ljk5Ni0xdi05YzAtLjU1Mi0uNDQ1LTEtLjk5Ni0xIi8+PC9nPjwvc3ZnPg==" x="585" y="543" width="64" height="64"/>
-  <text x="617" y="624" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">AWS Lambda</text>
-  <text x="617" y="638" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-bookmarks</text>
-  <text x="617" y="650" text-anchor="middle" font-size="9.5" fill="#5f6b7a">add · list · remove</text>
+  <!-- Lambda column -->
+  <!-- movies -->
+  <rect x="520" y="140" width="52" height="52" rx="5" fill="#ED7100"/>
+  <text x="546" y="176" text-anchor="middle" font-size="27" font-weight="bold" fill="#fff" font-family="Georgia, serif">&#955;</text>
+  <text x="606" y="158" font-size="11" font-weight="bold" fill="#232f3e">cinemax-movies</text>
+  <text x="606" y="172" font-size="9" fill="#555">catalog · search · filter · hot · cast</text>
+  <text x="606" y="184" font-size="9" fill="#555">on-demand ingest (kho tự lớn)</text>
 
-  <!-- ===== Data Layer group ===== -->
-  <rect x="810" y="150" width="250" height="535" rx="4" fill="none" stroke="#C925D1" stroke-width="1.3" stroke-dasharray="6 4"/>
-  <text x="822" y="172" font-size="11.5" font-weight="bold" fill="#C925D1">Data Layer</text>
-  <text x="822" y="186" font-size="9.5" fill="#C925D1">DynamoDB · on-demand</text>
+  <!-- auth -->
+  <rect x="520" y="240" width="52" height="52" rx="5" fill="#ED7100"/>
+  <text x="546" y="276" text-anchor="middle" font-size="27" font-weight="bold" fill="#fff" font-family="Georgia, serif">&#955;</text>
+  <text x="606" y="258" font-size="11" font-weight="bold" fill="#232f3e">cinemax-auth</text>
+  <text x="606" y="272" font-size="9" fill="#555">register · OTP · login · Google · JWT</text>
+  <text x="606" y="284" font-size="9" fill="#555">profile update · avatar to S3</text>
 
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUR5bmFtb0RCXzQ4PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNjOTI1ZDEiIGQ9Ik0wIDBoNjR2NjRIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDYuNTg2IDI1LjI1SDQzYTEgMSAwIDAgMS0uODIyLS40MzUgMS4wMiAxLjAyIDAgMCAxLS4xMTQtLjkzMWwyLjQ5My02LjcyMmgtOC45MTNsLTQuMDkxIDkuMDk4SDM2Yy4zMiAwIC42MjMuMTU2LjgxMi40Mi4xODcuMjY0LjIzOS42MDIuMTM2LjkxbC0zLjY2IDExLjEwMXptMy4xMi0uMjk3TDMxLjcwOSA0My4xNWEuOTkuOTkgMCAwIDEtMS4yMzIuMTQ2IDEuMDE0IDEuMDE0IDAgMCAxLS40MjMtMS4xOGw0LjU2LTEzLjgzM0gzMGExIDEgMCAwIDEtLjg0MS0uNDYzIDEuMDIgMS4wMiAwIDAgMS0uMDctLjk2Nmw1LTExLjEyYTEgMSAwIDAgMSAuOTEtLjU5M2gxMWMuMzI5IDAgLjYzNi4xNjMuODIzLjQzNS4xODcuMjczLjIzLjYyLjExNS45MzFsLTIuNDk0IDYuNzIxSDQ5YTEgMSAwIDAgMSAuOTI0LjYyNGMuMTU1LjM3OC4wNjkuODEzLS4yMTcgMS4xMDJNNDEuMDAyIDQ0LjIyYy0yLjcxIDEuODg2LTcuNjg3IDIuODgyLTEyLjQ2OCAyLjg4Mi00LjgxNiAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0bC4wMDEgMy44MTZjMCAxLjY2NCA0Ljc2OCAzLjk4NCAxMi41MzIgMy45ODQgNy40OTUgMCAxMi40NjgtMi43MDIgMTIuNDY4LTQuNDl6bTIuMDY0LTMuMjdjMCAuMTg3LS4wMzIuMzY3LS4wNjQuNTQ2djUuOTkzQzQzIDUxLjA3OSAzNi41MSA1NCAyOC41MzMgNTRjLTYuOTAzIDAtMTMuODcxLTEuODktMTQuNDczLTUuNWgtLjA1OUwxNCA0My40NDVWMTYuMTUxaC4wMDFjMC0zLjk5NiA3LjQ4Ny02LjE1MSAxNC41MzItNi4xNTEgMy45NCAwIDcuNzMuNjQgMTAuMzk3IDEuNzU2bC0uNzY2IDEuODY4Yy0yLjQzMi0xLjAxOS01Ljk0My0xLjYwMi05LjYzMS0xLjYwMi03Ljc2NCAwLTEyLjUzMiAyLjQwNS0xMi41MzIgNC4xMyAwIDEuNzI0IDQuNzY4IDQuMTI5IDEyLjUzMiA0LjEyOS4xOTUgMCAuMzk5IDAgLjU5Ni0uMDA3bC4wNzggMi4wMmMtLjIyNS4wMDktLjQ1LjAwOS0uNjc0LjAwOS00LjgxNyAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0djQuMzU4aC4wMDF2LjAxN2MuMDA1LjUzLjQ4OSAxLjE0MyAxLjM2NCAxLjcyIDEuOTgyIDEuMjg4IDUuNTUgMi4xNjggOS41MzkgMi4zNTFsLS4wOTEgMi4wMmMtNC4xMjYtLjE5LTcuNzUtMS4wNjktMTAuMDg2LTIuNDE2LS4zMS4yOTgtLjcyNiAxLjA1Ni0uNzI2IDEuNDY3IDAgMS43MjQgNC43NjggNC4xMjkgMTIuNTMyIDQuMTI5LjczOCAwIDEuNDY1LS4wMjUgMi4xNjItLjA3NWwuMTQgMi4wMTdjLS43NDMuMDU0LTEuNTE4LjA4LTIuMzAyLjA4LTQuODE3IDAtOS44MzctMS4wMDktMTIuNTMzLTIuOTI0djMuNjdoLjAwMWMuMDA1LjU0Ny40ODkgMS4xNiAxLjM2NCAxLjczNyAyLjI2OCAxLjQ3NCA2LjU0OSAyLjM5MyAxMS4xNjggMi4zOTNoLjMzdjIuMDIyaC0uMzNjLTQuNzc4IDAtOS44Ni0xLjAwOC0xMi41MzItMi41NDMtLjMyMi4yOTggMCAxLjAxIDAgMS41NDggMCAxLjcyNSA0Ljc2OCA0LjEzIDEyLjUzMiA0LjEzczEyLjUzMi0yLjQwNSAxMi41MzItNC4xM2MwLS42MS0uNi0xLjE3NC0xLjA5Mi0xLjUzOC0uNDEuMjQ3LS44Ni40ODMtMS4zNzIuN2wtLjc2OC0xLjg2OGMuNTMtLjIyMy45OS0uNDYzIDEuMzY0LS43MTEgMS4xLS43MzQgMS44MDQtMS43NzkgMS44MDQtMi4xNzVoMmMwIC45NC0uNjIxIDEuOTQ3LTEuNDE3IDIuNzc1IDEuMTkyIDEuMDQgMS40OCAyLjA3OCAxLjQ4IDIuODE3TTE3LjE0MiA0OC4zOWMuNzkxLjQwOCAxLjcxNi43NzIgMi43NTIgMS4wOGwuNTY0LTEuOTRhMTQgMTQgMCAwIDEtMi40MDYtLjk0em0yLjc1Mi0xMS4wNS41NjQtMS45NGMtLjkxNi0uMjcyLTEuNzI2LS41ODktMi40MDYtLjk0bC0uOTEgMS43OTljLjc5MS40MSAxLjcxNi43NzIgMi43NTIgMS4wOG0tMi43NTItMTMuMjEuOTEtMS44MDFjLjY4LjM1MiAxLjQ5LjY2OCAyLjQwNi45NGwtLjU2NCAxLjk0YTE2IDE2IDAgMCAxLTIuNzUyLTEuMDgiLz48L2c+PC9zdmc+" x="903" y="205" width="64" height="64"/>
-  <text x="935" y="286" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">DynamoDB</text>
-  <text x="935" y="300" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-movies</text>
-  <text x="935" y="312" text-anchor="middle" font-size="9.5" fill="#5f6b7a">GSI: slug · category</text>
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUR5bmFtb0RCXzQ4PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNjOTI1ZDEiIGQ9Ik0wIDBoNjR2NjRIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDYuNTg2IDI1LjI1SDQzYTEgMSAwIDAgMS0uODIyLS40MzUgMS4wMiAxLjAyIDAgMCAxLS4xMTQtLjkzMWwyLjQ5My02LjcyMmgtOC45MTNsLTQuMDkxIDkuMDk4SDM2Yy4zMiAwIC42MjMuMTU2LjgxMi40Mi4xODcuMjY0LjIzOS42MDIuMTM2LjkxbC0zLjY2IDExLjEwMXptMy4xMi0uMjk3TDMxLjcwOSA0My4xNWEuOTkuOTkgMCAwIDEtMS4yMzIuMTQ2IDEuMDE0IDEuMDE0IDAgMCAxLS40MjMtMS4xOGw0LjU2LTEzLjgzM0gzMGExIDEgMCAwIDEtLjg0MS0uNDYzIDEuMDIgMS4wMiAwIDAgMS0uMDctLjk2Nmw1LTExLjEyYTEgMSAwIDAgMSAuOTEtLjU5M2gxMWMuMzI5IDAgLjYzNi4xNjMuODIzLjQzNS4xODcuMjczLjIzLjYyLjExNS45MzFsLTIuNDk0IDYuNzIxSDQ5YTEgMSAwIDAgMSAuOTI0LjYyNGMuMTU1LjM3OC4wNjkuODEzLS4yMTcgMS4xMDJNNDEuMDAyIDQ0LjIyYy0yLjcxIDEuODg2LTcuNjg3IDIuODgyLTEyLjQ2OCAyLjg4Mi00LjgxNiAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0bC4wMDEgMy44MTZjMCAxLjY2NCA0Ljc2OCAzLjk4NCAxMi41MzIgMy45ODQgNy40OTUgMCAxMi40NjgtMi43MDIgMTIuNDY4LTQuNDl6bTIuMDY0LTMuMjdjMCAuMTg3LS4wMzIuMzY3LS4wNjQuNTQ2djUuOTkzQzQzIDUxLjA3OSAzNi41MSA1NCAyOC41MzMgNTRjLTYuOTAzIDAtMTMuODcxLTEuODktMTQuNDczLTUuNWgtLjA1OUwxNCA0My40NDVWMTYuMTUxaC4wMDFjMC0zLjk5NiA3LjQ4Ny02LjE1MSAxNC41MzItNi4xNTEgMy45NCAwIDcuNzMuNjQgMTAuMzk3IDEuNzU2bC0uNzY2IDEuODY4Yy0yLjQzMi0xLjAxOS01Ljk0My0xLjYwMi05LjYzMS0xLjYwMi03Ljc2NCAwLTEyLjUzMiAyLjQwNS0xMi41MzIgNC4xMyAwIDEuNzI0IDQuNzY4IDQuMTI5IDEyLjUzMiA0LjEyOS4xOTUgMCAuMzk5IDAgLjU5Ni0uMDA3bC4wNzggMi4wMmMtLjIyNS4wMDktLjQ1LjAwOS0uNjc0LjAwOS00LjgxNyAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0djQuMzU4aC4wMDF2LjAxN2MuMDA1LjUzLjQ4OSAxLjE0MyAxLjM2NCAxLjcyIDEuOTgyIDEuMjg4IDUuNTUgMi4xNjggOS41MzkgMi4zNTFsLS4wOTEgMi4wMmMtNC4xMjYtLjE5LTcuNzUtMS4wNjktMTAuMDg2LTIuNDE2LS4zMS4yOTgtLjcyNiAxLjA1Ni0uNzI2IDEuNDY3IDAgMS43MjQgNC43NjggNC4xMjkgMTIuNTMyIDQuMTI5LjczOCAwIDEuNDY1LS4wMjUgMi4xNjItLjA3NWwuMTQgMi4wMTdjLS43NDMuMDU0LTEuNTE4LjA4LTIuMzAyLjA4LTQuODE3IDAtOS44MzctMS4wMDktMTIuNTMzLTIuOTI0djMuNjdoLjAwMWMuMDA1LjU0Ny40ODkgMS4xNiAxLjM2NCAxLjczNyAyLjI2OCAxLjQ3NCA2LjU0OSAyLjM5MyAxMS4xNjggMi4zOTNoLjMzdjIuMDIyaC0uMzNjLTQuNzc4IDAtOS44Ni0xLjAwOC0xMi41MzItMi41NDMtLjMyMi4yOTggMCAxLjAxIDAgMS41NDggMCAxLjcyNSA0Ljc2OCA0LjEzIDEyLjUzMiA0LjEzczEyLjUzMi0yLjQwNSAxMi41MzItNC4xM2MwLS42MS0uNi0xLjE3NC0xLjA5Mi0xLjUzOC0uNDEuMjQ3LS44Ni40ODMtMS4zNzIuN2wtLjc2OC0xLjg2OGMuNTMtLjIyMy45OS0uNDYzIDEuMzY0LS43MTEgMS4xLS43MzQgMS44MDQtMS43NzkgMS44MDQtMi4xNzVoMmMwIC45NC0uNjIxIDEuOTQ3LTEuNDE3IDIuNzc1IDEuMTkyIDEuMDQgMS40OCAyLjA3OCAxLjQ4IDIuODE3TTE3LjE0MiA0OC4zOWMuNzkxLjQwOCAxLjcxNi43NzIgMi43NTIgMS4wOGwuNTY0LTEuOTRhMTQgMTQgMCAwIDEtMi40MDYtLjk0em0yLjc1Mi0xMS4wNS41NjQtMS45NGMtLjkxNi0uMjcyLTEuNzI2LS41ODktMi40MDYtLjk0bC0uOTEgMS43OTljLjc5MS40MSAxLjcxNi43NzIgMi43NTIgMS4wOG0tMi43NTItMTMuMjEuOTEtMS44MDFjLjY4LjM1MiAxLjQ5LjY2OCAyLjQwNi45NGwtLjU2NCAxLjk0YTE2IDE2IDAgMCAxLTIuNzUyLTEuMDgiLz48L2c+PC9zdmc+" x="903" y="374" width="64" height="64"/>
-  <text x="935" y="455" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">DynamoDB</text>
-  <text x="935" y="469" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-users</text>
-  <text x="935" y="481" text-anchor="middle" font-size="9.5" fill="#5f6b7a">PK: email · bcrypt</text>
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUR5bmFtb0RCXzQ4PC90aXRsZT48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNjOTI1ZDEiIGQ9Ik0wIDBoNjR2NjRIMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDYuNTg2IDI1LjI1SDQzYTEgMSAwIDAgMS0uODIyLS40MzUgMS4wMiAxLjAyIDAgMCAxLS4xMTQtLjkzMWwyLjQ5My02LjcyMmgtOC45MTNsLTQuMDkxIDkuMDk4SDM2Yy4zMiAwIC42MjMuMTU2LjgxMi40Mi4xODcuMjY0LjIzOS42MDIuMTM2LjkxbC0zLjY2IDExLjEwMXptMy4xMi0uMjk3TDMxLjcwOSA0My4xNWEuOTkuOTkgMCAwIDEtMS4yMzIuMTQ2IDEuMDE0IDEuMDE0IDAgMCAxLS40MjMtMS4xOGw0LjU2LTEzLjgzM0gzMGExIDEgMCAwIDEtLjg0MS0uNDYzIDEuMDIgMS4wMiAwIDAgMS0uMDctLjk2Nmw1LTExLjEyYTEgMSAwIDAgMSAuOTEtLjU5M2gxMWMuMzI5IDAgLjYzNi4xNjMuODIzLjQzNS4xODcuMjczLjIzLjYyLjExNS45MzFsLTIuNDk0IDYuNzIxSDQ5YTEgMSAwIDAgMSAuOTI0LjYyNGMuMTU1LjM3OC4wNjkuODEzLS4yMTcgMS4xMDJNNDEuMDAyIDQ0LjIyYy0yLjcxIDEuODg2LTcuNjg3IDIuODgyLTEyLjQ2OCAyLjg4Mi00LjgxNiAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0bC4wMDEgMy44MTZjMCAxLjY2NCA0Ljc2OCAzLjk4NCAxMi41MzIgMy45ODQgNy40OTUgMCAxMi40NjgtMi43MDIgMTIuNDY4LTQuNDl6bTIuMDY0LTMuMjdjMCAuMTg3LS4wMzIuMzY3LS4wNjQuNTQ2djUuOTkzQzQzIDUxLjA3OSAzNi41MSA1NCAyOC41MzMgNTRjLTYuOTAzIDAtMTMuODcxLTEuODktMTQuNDczLTUuNWgtLjA1OUwxNCA0My40NDVWMTYuMTUxaC4wMDFjMC0zLjk5NiA3LjQ4Ny02LjE1MSAxNC41MzItNi4xNTEgMy45NCAwIDcuNzMuNjQgMTAuMzk3IDEuNzU2bC0uNzY2IDEuODY4Yy0yLjQzMi0xLjAxOS01Ljk0My0xLjYwMi05LjYzMS0xLjYwMi03Ljc2NCAwLTEyLjUzMiAyLjQwNS0xMi41MzIgNC4xMyAwIDEuNzI0IDQuNzY4IDQuMTI5IDEyLjUzMiA0LjEyOS4xOTUgMCAuMzk5IDAgLjU5Ni0uMDA3bC4wNzggMi4wMmMtLjIyNS4wMDktLjQ1LjAwOS0uNjc0LjAwOS00LjgxNyAwLTkuODM3LTEuMDEtMTIuNTMzLTIuOTI0djQuMzU4aC4wMDF2LjAxN2MuMDA1LjUzLjQ4OSAxLjE0MyAxLjM2NCAxLjcyIDEuOTgyIDEuMjg4IDUuNTUgMi4xNjggOS41MzkgMi4zNTFsLS4wOTEgMi4wMmMtNC4xMjYtLjE5LTcuNzUtMS4wNjktMTAuMDg2LTIuNDE2LS4zMS4yOTgtLjcyNiAxLjA1Ni0uNzI2IDEuNDY3IDAgMS43MjQgNC43NjggNC4xMjkgMTIuNTMyIDQuMTI5LjczOCAwIDEuNDY1LS4wMjUgMi4xNjItLjA3NWwuMTQgMi4wMTdjLS43NDMuMDU0LTEuNTE4LjA4LTIuMzAyLjA4LTQuODE3IDAtOS44MzctMS4wMDktMTIuNTMzLTIuOTI0djMuNjdoLjAwMWMuMDA1LjU0Ny40ODkgMS4xNiAxLjM2NCAxLjczNyAyLjI2OCAxLjQ3NCA2LjU0OSAyLjM5MyAxMS4xNjggMi4zOTNoLjMzdjIuMDIyaC0uMzNjLTQuNzc4IDAtOS44Ni0xLjAwOC0xMi41MzItMi41NDMtLjMyMi4yOTggMCAxLjAxIDAgMS41NDggMCAxLjcyNSA0Ljc2OCA0LjEzIDEyLjUzMiA0LjEzczEyLjUzMi0yLjQwNSAxMi41MzItNC4xM2MwLS42MS0uNi0xLjE3NC0xLjA5Mi0xLjUzOC0uNDEuMjQ3LS44Ni40ODMtMS4zNzIuN2wtLjc2OC0xLjg2OGMuNTMtLjIyMy45OS0uNDYzIDEuMzY0LS43MTEgMS4xLS43MzQgMS44MDQtMS43NzkgMS44MDQtMi4xNzVoMmMwIC45NC0uNjIxIDEuOTQ3LTEuNDE3IDIuNzc1IDEuMTkyIDEuMDQgMS40OCAyLjA3OCAxLjQ4IDIuODE3TTE3LjE0MiA0OC4zOWMuNzkxLjQwOCAxLjcxNi43NzIgMi43NTIgMS4wOGwuNTY0LTEuOTRhMTQgMTQgMCAwIDEtMi40MDYtLjk0em0yLjc1Mi0xMS4wNS41NjQtMS45NGMtLjkxNi0uMjcyLTEuNzI2LS41ODktMi40MDYtLjk0bC0uOTEgMS43OTljLjc5MS40MSAxLjcxNi43NzIgMi43NTIgMS4wOG0tMi43NTItMTMuMjEuOTEtMS44MDFjLjY4LjM1MiAxLjQ5LjY2OCAyLjQwNi45NGwtLjU2NCAxLjk0YTE2IDE2IDAgMCAxLTIuNzUyLTEuMDgiLz48L2c+PC9zdmc+" x="903" y="543" width="64" height="64"/>
-  <text x="935" y="624" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">DynamoDB</text>
-  <text x="935" y="638" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-bookmarks</text>
-  <text x="935" y="650" text-anchor="middle" font-size="9.5" fill="#5f6b7a">PK: userId · SK: movieId</text>
+  <!-- social -->
+  <rect x="520" y="340" width="52" height="52" rx="5" fill="#ED7100"/>
+  <text x="546" y="376" text-anchor="middle" font-size="27" font-weight="bold" fill="#fff" font-family="Georgia, serif">&#955;</text>
+  <text x="606" y="358" font-size="11" font-weight="bold" fill="#232f3e">cinemax-social</text>
+  <text x="606" y="372" font-size="9" fill="#555">bookmarks · saved · comments</text>
+  <text x="606" y="384" font-size="9" fill="#555">profanity filter (loc tu bay)</text>
 
-  <!-- ===== S3 + CloudWatch ===== -->
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLVNpbXBsZS1TdG9yYWdlLVNlcnZpY2VfNDg8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iIzdhYTExNiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Im00Ny43NTkgMzMuOTQ4LjIzNC0xLjgxN2MyLjE3MyAxLjI1NCAyLjg0OSAxLjk5IDMuMDQ0IDIuMjkzLS4zMjQuMDYxLTEuMjA1LjA4NS0zLjI3OC0uNDc2TTMwLjQ5OSAyMWMtMTAuMzc0IDAtMTcuMTE3LTIuNTEyLTE3LjUtNC4zMDR2LS4xODVjLjM1LTEuMTE5IDYuMTQtNC41MSAxNy41LTQuNTEgMTEuMzQgMCAxNy4xMzMgMy4zOCAxNy41IDQuNTA0di4xMTFDNDcuNzI1IDE4LjQ0NiA0MC45NjIgMjEgMzAuNSAyMW0xNS4zMTkgMTIuMzYyYy00Ljc2NS0xLjU2NS0xMC45MDYtNC4zODMtMTMuMjI0LTUuNDc0YTIuMDkgMi4wOSAwIDAgMC0yLjA4Mi0xLjk4MkEyLjA5NyAyLjA5NyAwIDAgMCAyOC40MTggMjhjMCAxLjE1NC45NCAyLjA5NCAyLjA5NCAyLjA5NC40NTcgMCAuODc3LS4xNTIgMS4yMi0uNCAyLjQgMS4xMjggOC44ODcgNC4xMDQgMTMuODI2IDUuNjg2bC0xLjcyMSAxMy4zNDRDNDMuNTgzIDUwLjM1MiAzOC45MTkgNTIgMzAuNDk3IDUyYy04LjQyNSAwLTEzLjA5Mi0xLjY0OC0xMy4zNDItMy4yNDlsLTMuNzItMjguOTM3QzE2Ljk0NSAyMS45MTUgMjMuNzQ5IDIzIDMwLjUgMjNjNi43NSAwIDEzLjU1NC0xLjA4NSAxNy4wNjUtMy4xODV6TTUwIDE2LjVjMC0zLjA2OS04LjM0LTYuNS0xOS41LTYuNVMxMSAxMy40MzEgMTEgMTYuNXYuNTQzbDQuMTc0IDMxLjk5QzE1Ljg3NCA1My41MTYgMjYuMTIzIDU0IDMwLjQ5NyA1NGM0LjM3MiAwIDE0LjYxNi0uNDg0IDE1LjMyLTQuOTkzbDEuNjg0LTEzLjA2YzEuMjc3LjMzMiAyLjMxLjUxIDMuMTE1LjUwOC45OSAwIDEuNjU3LS4yNTIgMi4wOC0uNzU4LjM1LS40MTYuNDg5LS45NC4zODktMS40NzYtLjIyOC0xLjIyLTEuNjgyLTIuNTA5LTQuNzE1LTQuMTc3bC0uMS0uMDU1TDUwIDE3LjA0NHoiLz48L2c+PC9zdmc+" x="305" y="565" width="64" height="64"/>
-  <text x="337" y="646" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon S3</text>
-  <text x="337" y="660" text-anchor="middle" font-size="9.5" fill="#5f6b7a">cinemax-posters</text>
-  <text x="337" y="672" text-anchor="middle" font-size="9.5" fill="#5f6b7a">public read: posters/* only</text>
-  
-  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHRpdGxlPkljb24tQXJjaGl0ZWN0dXJlLzQ4L0FyY2hfQW1hem9uLUNsb3VkV2F0Y2hfNDg8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iI2U3MTU3YiIgZD0iTTAgMGg2NHY2NEgweiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik00Mi4xODQgMzkuMzgxYTQuMDk1IDQuMDk1IDAgMCAwLTguMTg5IDAgNC4wOTUgNC4wOTUgMCAwIDAgOC4xODkgMG0yIDBjMCAzLjM1My0yLjczNCA2LjA4MS02LjA5NSA2LjA4MXMtNi4wOTQtMi43MjgtNi4wOTQtNi4wOGMwLTMuMzU0IDIuNzM0LTYuMDgyIDYuMDk0LTYuMDgyczYuMDk1IDIuNzI4IDYuMDk1IDYuMDgxbTYuNTU5IDEwLjIzNS00Ljg5Ny00LjRhMTAgMTAgMCAwIDEtMS4wNjEgMS4xOWw0Ljg4NiA0LjM5N2EuODA2LjgwNiAwIDAgMCAxLjEzMS0uMDU5LjguOCAwIDAgMC0uMDU5LTEuMTI4bS0xMi42NTQtMi41MjRjNC4yNjIgMCA3LjcyOS0zLjQ2IDcuNzI5LTcuNzEgMC00LjI1Mi0zLjQ2Ny03LjcxMS03LjcyOS03LjcxMS00LjI2IDAtNy43MjcgMy40NTktNy43MjcgNy43MXMzLjQ2NyA3LjcxIDcuNzI3IDcuNzFtMTMuOTkyIDEuMDQyYTIuNzk2IDIuNzk2IDAgMCAxIC4yMDcgMy45NDZjLS41NTMuNjEtMS4zMTcuOTItMi4wODMuOTJhMi44IDIuOCAwIDAgMS0xLjg3Mi0uNzEzbC01LjE2MS00LjY0NmE5LjY3IDkuNjcgMCAwIDEtNS4wODMgMS40NDZjLTUuMzY0IDAtOS43MjctNC4zNTQtOS43MjctOS43MDZzNC4zNjMtOS43MDYgOS43MjctOS43MDZjNS4zNjUgMCA5LjcyOSA0LjM1NCA5LjcyOSA5LjcwNmE5LjYgOS42IDAgMCAxLS45MjEgNC4wOTV6TTE3LjY5NyAyMy41MzhjMCAuNDAxLjAyMy44LjA3IDEuMTg1YS45OTcuOTk3IDAgMCAxLS44MDYgMS4xMDFDMTUuMDg0IDI2LjMwOCAxMiAyNy43NzIgMTIgMzIuMTU3YzAgMy4zMjMgMS44MzYgNS4xNTcgMy4zNzcgNi4xMS42NzIuNDIzIDEuMjYzLjYzOCAxLjc2MS42NDNoOC45ODl2MS45OTZoLTljLS44ODQtLjAxLTEuODI3LS4zMjktMi44MS0uOTQ3QzEyLjcwOCAzOC45NjQgMTAgMzYuNjIgMTAgMzIuMTU3YzAtNS4yNyAzLjUyNi03LjI5MyA1LjcxLTguMDRhMTQgMTQgMCAwIDEtLjAxMy0uNTc5YzAtNC4zNzggMi45NzYtOC45MTYgNi45MjQtMTAuNTYgNC42MTEtMS45MjcgOS40OTgtLjk3MSAxMy4wNjYgMi41NTYgMS4wNDcgMS4wMzMgMS45MTcgMi4yNzQgMi41OTggMy43MDJhNS4zIDUuMyAwIDAgMSAzLjE3NC0xLjA2MWMyLjQxNSAwIDUuMTI4IDEuNzkzIDUuNjYzIDUuNzE1QzUwLjU4IDI0LjcyMiA1NCAyNy4yNzggNTQgMzIuMjE3YzAgMi44OS0xLjEzNiA1LjI0LTMuMjg3IDYuNzkybC0xLjE3Mi0xLjYxNkM1MS4xNzMgMzYuMjE0IDUyIDM0LjQ3MyA1MiAzMi4yMTdjMC00Ljk3OC00LjE4OS02LjIxNy01Ljk5LTYuNTE5YS45OTYuOTk2IDAgMCAxLS44MjQtMS4xMjdjLS4yNTUtMy4wNC0yLjA0NS00LjQwMS0zLjcyNy00LjQwMS0xLjA1NyAwLTIuMDUuNTE2LTIuNzI1IDEuNDE2YS45OTkuOTk5IDAgMCAxLTEuNzQxLS4yNmMtLjYzNC0xLjc1Mi0xLjU0Ny0zLjIyMy0yLjcxMi00LjM3NS0xLjQzLTEuNDExLTUuMzQ4LTQuNDQ0LTEwLjg5LTIuMTMyLTMuMTkzIDEuMzMtNS42OTQgNS4xNi01LjY5NCA4LjcyIi8+PC9nPjwvc3ZnPg==" x="1098" y="374" width="64" height="64"/>
-  <text x="1130" y="455" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#232f3e">CloudWatch</text>
-  <text x="1130" y="469" text-anchor="middle" font-size="9.5" fill="#5f6b7a">logs · metrics</text>
-  <text x="1130" y="481" text-anchor="middle" font-size="9.5" fill="#5f6b7a">5XX alarm</text>
+  <!-- watchrooms REST -->
+  <rect x="520" y="440" width="52" height="52" rx="5" fill="#ED7100"/>
+  <text x="546" y="476" text-anchor="middle" font-size="27" font-weight="bold" fill="#fff" font-family="Georgia, serif">&#955;</text>
+  <text x="606" y="458" font-size="11" font-weight="bold" fill="#232f3e">cinemax-watchrooms</text>
+  <text x="606" y="472" font-size="9" fill="#555">create / join / close room (REST)</text>
 
-  <!-- ===== Gmail (external) ===== -->
-  <rect x="555" y="765" width="124" height="56" rx="3" fill="#ffffff" stroke="#d6242d" stroke-width="1.6" stroke-dasharray="5 3"/>
-  <path d="M 575 781 h 34 v 24 h -34 z M 575 781 l 17 13 l 17 -13" fill="none" stroke="#d6242d" stroke-width="1.8" stroke-linejoin="round"/>
-  <text x="643" y="791" font-size="11" font-weight="bold" fill="#232f3e" text-anchor="middle">Gmail</text>
-  <text x="643" y="805" font-size="9.5" fill="#5f6b7a" text-anchor="middle">SMTP · OTP</text>
+  <!-- watchroom ws -->
+  <rect x="520" y="530" width="52" height="52" rx="5" fill="#ED7100"/>
+  <text x="546" y="566" text-anchor="middle" font-size="27" font-weight="bold" fill="#fff" font-family="Georgia, serif">&#955;</text>
+  <text x="606" y="548" font-size="11" font-weight="bold" fill="#232f3e">cinemax-watchroom-ws</text>
+  <text x="606" y="562" font-size="9" fill="#555">sync play/pause/seek · chat phong</text>
 
-  <!-- ===== Flows ===== -->
-  <!-- users -> app -->
-  <line x1="88" y1="218" x2="106" y2="370" stroke="#d6242d" stroke-width="1.6" marker-end="url(#ahr)"/>
-  <!-- app -> apigw (red main flow like sample) -->
-  <line x1="176" y1="406" x2="300" y2="406" stroke="#d6242d" stroke-width="1.6" marker-end="url(#ahr)"/>
-  <text x="238" y="397" text-anchor="middle" font-size="9.5" fill="#d6242d">HTTPS / JSON</text>
+  <!-- sync -->
+  <rect x="520" y="660" width="52" height="52" rx="5" fill="#ED7100"/>
+  <text x="546" y="696" text-anchor="middle" font-size="27" font-weight="bold" fill="#fff" font-family="Georgia, serif">&#955;</text>
+  <text x="606" y="678" font-size="11" font-weight="bold" fill="#232f3e">cinemax-sync</text>
+  <text x="606" y="692" font-size="9" fill="#555">phim moi moi dem tu kkphim</text>
 
-  <!-- apigw -> lambdas -->
-  <path d="M 369 386 L 580 245" stroke="#232f3e" stroke-width="1.4" fill="none" marker-end="url(#ah)"/>
-  <text x="462" y="300" text-anchor="middle" font-size="9.5" fill="#5f6b7a">/api/movies/*</text>
-  <line x1="369" y1="406" x2="580" y2="406" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)"/>
-  <text x="468" y="397" text-anchor="middle" font-size="9.5" fill="#5f6b7a">/api/auth/*</text>
-  <path d="M 369 426 L 580 567" stroke="#232f3e" stroke-width="1.4" fill="none" marker-end="url(#ah)"/>
-  <text x="462" y="520" text-anchor="middle" font-size="9.5" fill="#5f6b7a">/users/{id}/bookmarks</text>
+  <!-- EventBridge -->
+  <rect x="300" y="658" width="52" height="52" rx="5" fill="#E7157B"/>
+  <circle cx="326" cy="684" r="13" fill="none" stroke="#fff" stroke-width="2"/>
+  <path d="M 326 676 v 8 l 5 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 326 666 v -3 M 326 702 v 3 M 308 684 h 3 M 341 684 h 3" stroke="#fff" stroke-width="1.6"/>
+  <text x="326" y="726" text-anchor="middle" font-size="11" font-weight="bold" fill="#232f3e">EventBridge</text>
+  <text x="326" y="739" text-anchor="middle" font-size="9.5" fill="#555">cron 02:00 hang dem</text>
 
-  <!-- lambdas -> dynamodb (teal data flow + lock) -->
-  <line x1="649" y1="237" x2="898" y2="237" stroke="#0d8a8a" stroke-width="1.5" marker-end="url(#ah)"/>
-  <line x1="649" y1="406" x2="898" y2="406" stroke="#0d8a8a" stroke-width="1.5" marker-end="url(#ah)"/>
-  <line x1="649" y1="575" x2="898" y2="575" stroke="#0d8a8a" stroke-width="1.5" marker-end="url(#ah)"/>
-  <!-- small IAM locks on the data flows -->
-  <g>
-    <rect x="766" y="228" width="13" height="10" rx="2" fill="#bf8700"/><path d="M 769 228 v -3 a 3.5 3.5 0 0 1 7 0 v 3" stroke="#bf8700" stroke-width="2" fill="none"/>
-    <rect x="766" y="397" width="13" height="10" rx="2" fill="#bf8700"/><path d="M 769 397 v -3 a 3.5 3.5 0 0 1 7 0 v 3" stroke="#bf8700" stroke-width="2" fill="none"/>
-    <rect x="766" y="566" width="13" height="10" rx="2" fill="#bf8700"/><path d="M 769 566 v -3 a 3.5 3.5 0 0 1 7 0 v 3" stroke="#bf8700" stroke-width="2" fill="none"/>
-  </g>
+  <!-- DynamoDB group -->
+  <rect x="850" y="170" width="56" height="56" rx="5" fill="#C925D1"/>
+  <ellipse cx="878" cy="186" rx="13" ry="5" fill="none" stroke="#fff" stroke-width="2"/>
+  <path d="M 865 186 v 22 a 13 5 0 0 0 26 0 v -22 M 865 197 a 13 5 0 0 0 26 0" fill="none" stroke="#fff" stroke-width="2"/>
+  <text x="940" y="182" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon DynamoDB — 7 bang</text>
+  <text x="940" y="197" font-size="9.5" fill="#555">movies (GSI: slug, category) · users (PK email)</text>
+  <text x="940" y="210" font-size="9.5" fill="#555">bookmarks · saved-movies · comments</text>
+  <text x="940" y="223" font-size="9.5" fill="#555">rooms · connections (WebSocket)</text>
 
-  <!-- app -> s3 (green static flow) -->
-  <polyline points="108,437 108,597 300,597" fill="none" stroke="#7AA116" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#ahg)"/>
-  <text x="204" y="588" text-anchor="middle" font-size="9.5" fill="#7AA116">GET posters</text>
+  <!-- S3 -->
+  <rect x="850" y="330" width="56" height="56" rx="5" fill="#7AA116"/>
+  <path d="M 866 346 a 12 4.5 0 0 0 24 0 a 12 4.5 0 0 0 -24 0 m 0 0 l 3 26 a 9 3.5 0 0 0 18 0 l 3 -26" fill="none" stroke="#fff" stroke-width="2"/>
+  <text x="940" y="348" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon S3</text>
+  <text x="940" y="363" font-size="9.5" fill="#555">500+ poster &amp; thumbnail · avatar nguoi dung</text>
+  <text x="940" y="376" font-size="9.5" fill="#555">public read: posters/* only</text>
 
-  <!-- compute -> cloudwatch (pink observability) -->
-  <polyline points="730,406 770,406 770,330 1080,330 1098,374" fill="none" stroke="#E7157B" stroke-width="1.3" stroke-dasharray="5 3" marker-end="url(#ahp)"/>
-  <text x="925" y="322" text-anchor="middle" font-size="9.5" fill="#E7157B">logs · metrics from all functions</text>
+  <!-- CloudWatch -->
+  <rect x="850" y="470" width="56" height="56" rx="5" fill="#E7157B"/>
+  <circle cx="878" cy="498" r="14" fill="none" stroke="#fff" stroke-width="2"/>
+  <path d="M 878 490 v 8 l 6 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="940" y="490" font-size="11.5" font-weight="bold" fill="#232f3e">Amazon CloudWatch</text>
+  <text x="940" y="505" font-size="9.5" fill="#555">logs cua 6 Lambda · metrics · 5XX alarm</text>
 
-  <!-- auth -> gmail (red dashed) -->
-  <polyline points="585,420 470,420 470,793 550,793" fill="none" stroke="#d6242d" stroke-width="1.3" stroke-dasharray="5 3" marker-end="url(#ahr)"/>
-  <text x="462" y="620" text-anchor="end" font-size="9.5" fill="#d6242d">send OTP</text>
+  <!-- External services (outside frame, right) -->
+  <rect x="1080" y="640" width="170" height="54" fill="#fff" stroke="#C7511F" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1165" y="662" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#C7511F">kkphim API (phimapi.com)</text>
+  <text x="1165" y="678" text-anchor="middle" font-size="9.5" fill="#555">nguon phim · tim kiem · chi tiet</text>
 
-  <!-- ===== Legend ===== -->
-  <g font-size="9.5" fill="#5f6b7a">
-    <text x="40" y="700" font-size="11" font-weight="bold" fill="#232f3e">Legend</text>
-    <line x1="40" y1="714" x2="70" y2="714" stroke="#d6242d" stroke-width="1.6"/><text x="76" y="718">user traffic</text>
-    <line x1="40" y1="732" x2="70" y2="732" stroke="#232f3e" stroke-width="1.4"/><text x="76" y="736">API routing</text>
-    <line x1="40" y1="750" x2="70" y2="750" stroke="#0d8a8a" stroke-width="1.5"/><text x="76" y="754">data access</text>
-    <line x1="40" y1="768" x2="70" y2="768" stroke="#7AA116" stroke-width="1.5" stroke-dasharray="6 3"/><text x="76" y="772">static content</text>
-    <line x1="40" y1="786" x2="70" y2="786" stroke="#E7157B" stroke-width="1.3" stroke-dasharray="5 3"/><text x="76" y="790">observability</text>
-    <rect x="42" y="800" width="13" height="10" rx="2" fill="#bf8700"/><path d="M 45 800 v -3 a 3.5 3.5 0 0 1 7 0 v 3" stroke="#bf8700" stroke-width="2" fill="none"/><text x="76" y="809">least-privilege IAM role per function</text>
-  </g>
+  <rect x="1080" y="712" width="170" height="48" fill="#fff" stroke="#0d253f" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1165" y="732" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0d253f">TMDB API</text>
+  <text x="1165" y="747" text-anchor="middle" font-size="9.5" fill="#555">anh dien vien · diem rating</text>
+
+  <rect x="1080" y="778" width="170" height="48" fill="#fff" stroke="#D93025" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1165" y="798" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#D93025">Gmail SMTP</text>
+  <text x="1165" y="813" text-anchor="middle" font-size="9.5" fill="#555">email OTP xac minh</text>
+
+  <!-- ===== Arrows ===== -->
+  <!-- client -> REST GW -->
+  <polyline points="160,360 308,360 308,301" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)"/>
+  <text x="200" y="350" font-size="9.5" fill="#555">HTTPS / JSON</text>
+  <!-- client <-> WS GW -->
+  <polyline points="160,420 308,420 308,495" fill="none" stroke="#232f3e" stroke-width="1.4" marker-end="url(#ah)" marker-start="url(#ah)"/>
+  <text x="200" y="412" font-size="9.5" fill="#555">wss (xem chung)</text>
+
+  <!-- REST GW -> lambdas -->
+  <path d="M 336 258 L 515 172" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
+  <line x1="336" y1="268" x2="515" y2="266" stroke="#232f3e" stroke-width="1.3" marker-end="url(#ah)"/>
+  <path d="M 336 282 L 515 360" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
+  <path d="M 336 292 L 515 458" stroke="#232f3e" stroke-width="1.3" fill="none" marker-end="url(#ah)"/>
+  <!-- WS GW <-> ws lambda -->
+  <line x1="336" y1="540" x2="515" y2="552" stroke="#232f3e" stroke-width="1.3" marker-end="url(#ah)" marker-start="url(#ah)"/>
+
+  <!-- lambdas -> dynamodb (bus line x=800) -->
+  <polyline points="572,166 800,166 800,190 845,190" fill="none" stroke="#232f3e" stroke-width="1.2" marker-end="url(#ah)"/>
+  <polyline points="572,266 800,266 800,206" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="572,366 800,366 800,226" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="572,466 800,466 800,386" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="572,556 800,556 800,486" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+  <polyline points="572,686 800,686 800,586" fill="none" stroke="#232f3e" stroke-width="1.2"/>
+
+  <!-- movies/auth/sync -> S3 -->
+  <polyline points="820,330 845,355" fill="none" stroke="#7AA116" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahg)"/>
+  <text x="780" y="322" font-size="9" fill="#7AA116">poster · avatar</text>
+
+  <!-- EventBridge -> sync -->
+  <line x1="352" y1="684" x2="515" y2="686" stroke="#E7157B" stroke-width="1.4" marker-end="url(#ahp)"/>
+  <text x="430" y="676" text-anchor="middle" font-size="9.5" fill="#E7157B">trigger</text>
+
+  <!-- sync & movies -> kkphim -->
+  <polyline points="572,700 1040,700 1040,667 1075,667" fill="none" stroke="#C7511F" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
+  <text x="830" y="693" font-size="9" fill="#C7511F">lay phim moi / tim kiem fallback</text>
+
+  <!-- movies -> tmdb -->
+  <polyline points="640,196 660,196 660,620 1060,620 1060,736 1075,736" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+
+  <!-- auth -> gmail -->
+  <polyline points="546,292 546,320 490,320 490,802 1075,802" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
+  <text x="700" y="795" font-size="9" fill="#D93025">send OTP</text>
+
+  <!-- lambdas -> cloudwatch -->
+  <polyline points="878,530 878,560 830,560 830,610 878,610" fill="none" stroke="#E7157B" stroke-width="0" />
+  <polyline points="700,610 878,610 878,531" fill="none" stroke="#E7157B" stroke-width="1.1" stroke-dasharray="3 3" marker-end="url(#ahp)"/>
+  <text x="740" y="603" font-size="9" fill="#E7157B">logs tu tat ca Lambda</text>
 </svg>
