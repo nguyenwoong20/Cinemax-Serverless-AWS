@@ -11,8 +11,8 @@ const TABLE = process.env.MOVIES_TABLE;
 const BUCKET = process.env.POSTERS_BUCKET;
 const REGION = process.env.AWS_REGION || 'ap-southeast-1';
 const PUBLIC_BASE = `https://${BUCKET}.s3.${REGION}.amazonaws.com`;
-const SOURCE = 'https://phimapi.com';
-const PAGES = parseInt(process.env.SYNC_PAGES || '2', 10);
+const SOURCE = process.env.SOURCE_API || 'https://phimapi.com';
+const PAGES = parseInt(process.env.SYNC_PAGES || '4', 10);
 
 const db = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const s3 = new S3Client({});

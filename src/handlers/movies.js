@@ -16,7 +16,8 @@ const {
 const { toMovieItem } = require('../lib/movie-mapper');
 const { mirrorImage } = require('../lib/images');
 
-const SOURCE = 'https://phimapi.com';
+// Domain nguồn phim cấu hình được (đổi domain kkphim chỉ cần đổi 1 parameter, không sửa code)
+const SOURCE = process.env.SOURCE_API || 'https://phimapi.com';
 const IMG_BASE = 'https://phimimg.com';
 const absImg = (u) => (u && !u.startsWith('http') ? `${IMG_BASE}/${u.replace(/^\//, '')}` : u || '');
 
@@ -60,23 +61,33 @@ function toCard(item) {
   };
 }
 
-async function scanAll(extra = {}) {
+// Cache kết quả scan trong bộ nhớ container Lambda 60 giây:
+// trang chủ app gọi 9-10 danh sách cùng lúc -> chỉ tốn 1 lần quét bảng,
+// các mục không còn lúc có lúc không do nghẽn scan song song.
+let _scanCache = null;
+let _scanCacheAt = 0;
+
+async function scanAll() {
+  if (_scanCache && Date.now() - _scanCacheAt < 60000) return _scanCache;
+
   const items = [];
   let ExclusiveStartKey;
   do {
     const result = await client.send(new ScanCommand({
       TableName: TABLE,
       ProjectionExpression: LIST_ATTRS,
-      ExpressionAttributeNames: { ...LIST_NAMES, ...(extra.names || {}) },
-      ...(extra.filter ? { FilterExpression: extra.filter } : {}),
-      ...(extra.values ? { ExpressionAttributeValues: extra.values } : {}),
+      ExpressionAttributeNames: LIST_NAMES,
       ExclusiveStartKey,
     }));
     items.push(...result.Items);
     ExclusiveStartKey = result.LastEvaluatedKey;
   } while (ExclusiveStartKey);
-  // newest first
-  items.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+  // phim vừa được kkphim cập nhật (tập mới) nổi lên đầu
+  items.sort((a, b) =>
+    (b.modifiedAt || b.createdAt || '').localeCompare(a.modifiedAt || a.createdAt || ''));
+
+  _scanCache = items;
+  _scanCacheAt = Date.now();
   return items;
 }
 
@@ -123,10 +134,7 @@ exports.handler = async (event) => {
 
     if (seg1 === 'category' || seg1 === 'country') {
       const attr = seg1 === 'category' ? 'categorySlugs' : 'countrySlugs';
-      const items = await scanAll({
-        filter: `contains(${attr}, :s)`,
-        values: { ':s': seg2 || '' },
-      });
+      const items = (await scanAll()).filter((m) => (m[attr] || '').includes(seg2 || ''));
       return response(200, { success: true, data: paginate(items, params).map(toCard) });
     }
 
@@ -173,8 +181,13 @@ exports.handler = async (event) => {
       // day shows a different hot line-up; newly-hot movies join the pool automatically.
       const items = await scanAll();
       const currentYear = new Date().getFullYear();
+      // chỉ phim ĐANG hot: vừa được kkphim cập nhật trong 45 ngày + có điểm khán giả
+      const recentCutoff = new Date(Date.now() - 45 * 86400000).toISOString();
       const pool = items
-        .filter((m) => (m.year || 0) >= currentYear - 1 && (m.votes || 0) > 0)
+        .filter((m) =>
+          (m.year || 0) >= currentYear - 1 &&
+          (m.votes || 0) > 0 &&
+          (m.modifiedAt || m.createdAt || '') >= recentCutoff)
         .sort((a, b) => {
           const score = (m) => (m.rating || 0) * Math.log10((m.votes || 0) + 1);
           return score(b) - score(a);
@@ -202,18 +215,13 @@ exports.handler = async (event) => {
 
     if (seg1 === 'type') {
       // single | series | hoathinh | tvshows
-      const items = await scanAll({
-        filter: '#tp = :s',
-        values: { ':s': seg2 || '' },
-      });
+      const items = (await scanAll()).filter((m) => m.type === (seg2 || ''));
       return response(200, { success: true, data: paginate(items, params).map(toCard) });
     }
 
     if (seg1 === 'year') {
-      const items = await scanAll({
-        filter: '#yr = :y',
-        values: { ':y': parseInt(seg2, 10) || 0 },
-      });
+      const y = parseInt(seg2, 10) || 0;
+      const items = (await scanAll()).filter((m) => m.year === y);
       return response(200, { success: true, data: paginate(items, params).map(toCard) });
     }
 

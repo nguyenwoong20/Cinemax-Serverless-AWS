@@ -14,6 +14,10 @@ Parameters:
     NoEcho: true
     Default: ''
     Description: TMDB API key for real actor photos (optional)
+  SourceApi:
+    Type: String
+    Default: https://phimapi.com
+    Description: Movie source API base URL (change here if kkphim moves domain)
   EmailUser:
     Type: String
     Default: ''
@@ -68,6 +72,7 @@ Resources:
       Environment:
         Variables:
           TMDB_API_KEY: !Ref TmdbApiKey
+          SOURCE_API: !Ref SourceApi
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref MoviesTable
@@ -150,6 +155,10 @@ Resources:
       Description: Nightly sync of new/updated movies from phimapi.com into DynamoDB + S3
       Timeout: 300
       MemorySize: 512
+      Environment:
+        Variables:
+          SOURCE_API: !Ref SourceApi
+          SYNC_PAGES: '4'
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref MoviesTable
