@@ -159,6 +159,7 @@ Resources:
         Variables:
           SOURCE_API: !Ref SourceApi
           SYNC_PAGES: '4'
+          TMDB_API_KEY: !Ref TmdbApiKey
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref MoviesTable

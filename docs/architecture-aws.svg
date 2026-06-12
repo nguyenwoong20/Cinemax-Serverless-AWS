@@ -131,17 +131,17 @@
 
   <!-- External services (ngoài AWS Cloud) -->
   
-  <rect x="760" y="1080" width="220" height="56" fill="#fff" stroke="#C7511F" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="870" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#C7511F">kkphim API (phimapi.com)</text>
-  <text x="870" y="1120" text-anchor="middle" font-size="9.5" fill="#555">nguồn phim · tìm kiếm · chi tiết</text>
+  <rect x="640" y="1080" width="220" height="56" fill="#fff" stroke="#C7511F" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="750" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#C7511F">kkphim API (phimapi.com)</text>
+  <text x="750" y="1120" text-anchor="middle" font-size="9.5" fill="#555">nguồn phim · tìm kiếm · chi tiết</text>
   
-  <rect x="1010" y="1080" width="220" height="56" fill="#fff" stroke="#0d253f" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1120" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0d253f">TMDB API</text>
-  <text x="1120" y="1120" text-anchor="middle" font-size="9.5" fill="#555">ảnh diễn viên · điểm rating</text>
+  <rect x="900" y="1080" width="220" height="56" fill="#fff" stroke="#0d253f" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1010" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0d253f">TMDB API</text>
+  <text x="1010" y="1120" text-anchor="middle" font-size="9.5" fill="#555">trending · diễn viên · rating</text>
   
-  <rect x="1260" y="1080" width="220" height="56" fill="#fff" stroke="#D93025" stroke-width="1.5" stroke-dasharray="5 3"/>
-  <text x="1370" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#D93025">Gmail SMTP</text>
-  <text x="1370" y="1120" text-anchor="middle" font-size="9.5" fill="#555">email OTP xác minh</text>
+  <rect x="1160" y="1080" width="220" height="56" fill="#fff" stroke="#D93025" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="1270" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#D93025">Gmail SMTP</text>
+  <text x="1270" y="1120" text-anchor="middle" font-size="9.5" fill="#555">email OTP xác minh</text>
 
   <!-- ===== Lines ===== -->
   <!-- App -> REST GW -->
@@ -183,17 +183,16 @@
   <polyline points="1110,165 1110,100 1616,100 1616,425" fill="none" stroke="#E7157B" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahp)"/>
   <text x="1250" y="93" font-size="9.5" fill="#E7157B">logs · metrics from all functions</text>
 
-  <!-- sync -> kkphim -->
-  <polyline points="1002,910 1075,910 1075,1060 870,1060 870,1075" fill="none" stroke="#C7511F" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
-  <text x="1090" y="1000" font-size="9.5" fill="#C7511F">phim mới · tìm kiếm fallback</text>
-
-  <!-- movies -> TMDB (vòng ngoài phải) -->
-  <polyline points="966,196 966,140 1755,140 1755,1108 1485,1108" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-  <text x="1660" y="133" font-size="9.5" fill="#0d253f">cast · rating</text>
-
-  <!-- auth -> Gmail (lane trái compute, vòng đáy) -->
-  <polyline points="930,382 800,382 800,1040 1370,1040 1370,1075" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
-  <text x="815" y="1032" font-size="9.5" fill="#D93025">send OTP</text>
+  <!-- 3 dịch vụ ngoài: nối thẳng từ đáy nhóm Compute, ghi rõ function gọi -->
+  
+  <polyline points="850,975 850,1040 750,1040 750,1075" fill="none" stroke="#C7511F" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
+  <text x="858" y="1033" font-size="9" fill="#C7511F">movies · sync</text>
+  
+  <polyline points="966,975 966,1040 1010,1040 1010,1075" fill="none" stroke="#0d253f" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+  <text x="974" y="1033" font-size="9" fill="#0d253f">movies · sync</text>
+  
+  <polyline points="1082,975 1082,1040 1270,1040 1270,1075" fill="none" stroke="#D93025" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ahred)"/>
+  <text x="1090" y="1033" font-size="9" fill="#D93025">auth</text>
 
   <!-- Legend -->
   <text x="100" y="880" font-size="12.5" font-weight="bold" fill="#232f3e">Legend</text>

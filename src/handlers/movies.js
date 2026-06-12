@@ -12,6 +12,7 @@ const {
   ScanCommand,
   QueryCommand,
   PutCommand,
+  GetCommand,
 } = require('@aws-sdk/lib-dynamodb');
 const { toMovieItem } = require('../lib/movie-mapper');
 const { mirrorImage } = require('../lib/images');
@@ -82,13 +83,15 @@ async function scanAll() {
     items.push(...result.Items);
     ExclusiveStartKey = result.LastEvaluatedKey;
   } while (ExclusiveStartKey);
+  // bỏ các item meta nội bộ (vd __trending__) khỏi mọi danh sách
+  const visible = items.filter((m) => !(m.id || '').startsWith('__'));
   // phim vừa được kkphim cập nhật (tập mới) nổi lên đầu
-  items.sort((a, b) =>
+  visible.sort((a, b) =>
     (b.modifiedAt || b.createdAt || '').localeCompare(a.modifiedAt || a.createdAt || ''));
 
-  _scanCache = items;
+  _scanCache = visible;
   _scanCacheAt = Date.now();
-  return items;
+  return visible;
 }
 
 function paginate(items, params) {
@@ -176,6 +179,30 @@ exports.handler = async (event) => {
     }
 
     if (seg1 === 'hot') {
+      const limitHot = Math.min(parseInt(params.limit || '12', 10) || 12, 50);
+      // Ưu tiên bảng TMDB Trending (sync tổng hợp mỗi đêm, đã khớp sang kkphim)
+      try {
+        const meta = await client.send(new GetCommand({
+          TableName: TABLE,
+          Key: { id: '__trending__' },
+          ProjectionExpression: 'trendingSlugs',
+        }));
+        const slugs = (meta.Item && meta.Item.trendingSlugs) || [];
+        if (slugs.length >= 5) {
+          const bySlug = new Map((await scanAll()).map((m) => [m.slug, m]));
+          const hot = slugs.map((s) => bySlug.get(s)).filter(Boolean);
+          if (hot.length >= 5) {
+            return response(200, {
+              success: true,
+              data: hot.slice(0, limitHot).map(toCard),
+              source: 'tmdb-trending',
+            });
+          }
+        }
+      } catch (err) {
+        console.warn('trending read failed:', err.message);
+      }
+
       // "Hot" = recent movies ranked by TMDB audience score (rating × popularity).
       // The pick rotates DAILY: a date-seeded shuffle of the hot pool, so every
       // day shows a different hot line-up; newly-hot movies join the pool automatically.

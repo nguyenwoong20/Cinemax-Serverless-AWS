@@ -75,6 +75,64 @@ async function upsertMovie(slug) {
   await db.send(new PutCommand({ TableName: TABLE, Item: item }));
 }
 
+// Tìm phim trên kkphim khớp với một phim TMDB: search theo tên rồi đối chiếu tmdb.id
+async function findOnSource(tmdbId, ...keywords) {
+  for (const kw of keywords) {
+    if (!kw) continue;
+    try {
+      const json = await fetchJson(
+        `${SOURCE}/v1/api/tim-kiem?keyword=${encodeURIComponent(kw)}&limit=10`,
+      );
+      const list = (json.data && json.data.items) || [];
+      const hit = list.find((m) => m.tmdb && String(m.tmdb.id) === String(tmdbId));
+      if (hit) return hit;
+    } catch { /* thử keyword tiếp theo */ }
+  }
+  return null;
+}
+
+// Lấy bảng TMDB Trending (như trang chủ themoviedb.org), dò sang kkphim,
+// nhập phim còn thiếu vào kho và lưu danh sách cho endpoint /hot.
+async function syncTrending() {
+  const KEY = process.env.TMDB_API_KEY;
+  if (!KEY) return 0;
+
+  const res = await fetchJson(
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`,
+  );
+  const slugs = [];
+  for (const t of (res.results || []).slice(0, 20)) {
+    const title = t.title || t.name || '';
+    const original = t.original_title || t.original_name || '';
+    try {
+      const hit = await findOnSource(t.id, original, title);
+      if (!hit) { console.log(`trending: khong thay tren kkphim: ${title}`); continue; }
+      if ((await existingModifiedAt(hit.slug)) === null) {
+        await upsertMovie(hit.slug);
+        console.log(`trending ingested: ${hit.slug}`);
+      }
+      slugs.push(hit.slug);
+    } catch (err) {
+      console.warn(`trending match failed: ${title}: ${err.message}`);
+    }
+  }
+
+  if (slugs.length) {
+    await db.send(new PutCommand({
+      TableName: TABLE,
+      Item: {
+        id: '__trending__',
+        slug: '__trending__',
+        name: '__meta__',
+        type: '__meta__',
+        trendingSlugs: slugs,
+        modifiedAt: new Date().toISOString(),
+      },
+    }));
+  }
+  return slugs.length;
+}
+
 exports.handler = async () => {
   let added = 0, updated = 0, unchanged = 0, failed = 0;
 
@@ -102,7 +160,14 @@ exports.handler = async () => {
     }
   }
 
-  const summary = { added, updated, unchanged, failed };
+  let trending = 0;
+  try {
+    trending = await syncTrending();
+  } catch (err) {
+    console.error('trending sync failed:', err.message);
+  }
+
+  const summary = { added, updated, unchanged, failed, trending };
   console.log('Sync summary:', JSON.stringify(summary));
   return summary;
 };

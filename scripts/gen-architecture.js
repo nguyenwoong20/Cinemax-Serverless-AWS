@@ -29,6 +29,11 @@ const ext = (x, color, title, sub) => `
   <text x="${x + 110}" y="1103" text-anchor="middle" font-size="11.5" font-weight="bold" fill="${color}">${title}</text>
   <text x="${x + 110}" y="1120" text-anchor="middle" font-size="9.5" fill="#555">${sub}</text>`;
 
+// đường nối từ đáy nhóm Compute xuống box dịch vụ ngoài, ghi rõ function gọi
+const extLink = (xDrop, xBox, color, marker, label) => `
+  <polyline points="${xDrop},975 ${xDrop},1040 ${xBox},1040 ${xBox},1075" fill="none" stroke="${color}" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#${marker})"/>
+  <text x="${xDrop + 8}" y="1033" font-size="9" fill="${color}">${label}</text>`;
+
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 1180" font-family="Segoe UI, Arial, sans-serif">
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#232f3e"/></marker>
@@ -113,9 +118,9 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 1180" fon
   <text x="1616" y="544" text-anchor="middle" font-size="9.5" fill="#555">5XX alarm</text>
 
   <!-- External services (ngoài AWS Cloud) -->
-  ${ext(760, '#C7511F', 'kkphim API (phimapi.com)', 'nguồn phim · tìm kiếm · chi tiết')}
-  ${ext(1010, '#0d253f', 'TMDB API', 'ảnh diễn viên · điểm rating')}
-  ${ext(1260, '#D93025', 'Gmail SMTP', 'email OTP xác minh')}
+  ${ext(640, '#C7511F', 'kkphim API (phimapi.com)', 'nguồn phim · tìm kiếm · chi tiết')}
+  ${ext(900, '#0d253f', 'TMDB API', 'trending · diễn viên · rating')}
+  ${ext(1160, '#D93025', 'Gmail SMTP', 'email OTP xác minh')}
 
   <!-- ===== Lines ===== -->
   <!-- App -> REST GW -->
@@ -157,17 +162,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 1180" fon
   <polyline points="1110,165 1110,100 1616,100 1616,425" fill="none" stroke="#E7157B" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ahp)"/>
   <text x="1250" y="93" font-size="9.5" fill="#E7157B">logs · metrics from all functions</text>
 
-  <!-- sync -> kkphim -->
-  <polyline points="1002,910 1075,910 1075,1060 870,1060 870,1075" fill="none" stroke="#C7511F" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#ahb)"/>
-  <text x="1090" y="1000" font-size="9.5" fill="#C7511F">phim mới · tìm kiếm fallback</text>
-
-  <!-- movies -> TMDB (vòng ngoài phải) -->
-  <polyline points="966,196 966,140 1755,140 1755,1108 1485,1108" fill="none" stroke="#0d253f" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ah)"/>
-  <text x="1660" y="133" font-size="9.5" fill="#0d253f">cast · rating</text>
-
-  <!-- auth -> Gmail (lane trái compute, vòng đáy) -->
-  <polyline points="930,382 800,382 800,1040 1370,1040 1370,1075" fill="none" stroke="#D93025" stroke-width="1.1" stroke-dasharray="4 3" marker-end="url(#ahr)"/>
-  <text x="815" y="1032" font-size="9.5" fill="#D93025">send OTP</text>
+  <!-- 3 dịch vụ ngoài: nối thẳng từ đáy nhóm Compute, ghi rõ function gọi -->
+  ${extLink(850, 750, '#C7511F', 'ahb', 'movies · sync')}
+  ${extLink(966, 1010, '#0d253f', 'ah', 'movies · sync')}
+  ${extLink(1082, 1270, '#D93025', 'ahred', 'auth')}
 
   <!-- Legend -->
   <text x="100" y="880" font-size="12.5" font-weight="bold" fill="#232f3e">Legend</text>
