@@ -67,31 +67,39 @@ function toCard(item) {
 // các mục không còn lúc có lúc không do nghẽn scan song song.
 let _scanCache = null;
 let _scanCacheAt = 0;
+let _scanInflight = null;
 
 async function scanAll() {
   if (_scanCache && Date.now() - _scanCacheAt < 60000) return _scanCache;
+  if (_scanInflight) return _scanInflight;
 
-  const items = [];
-  let ExclusiveStartKey;
-  do {
-    const result = await client.send(new ScanCommand({
-      TableName: TABLE,
-      ProjectionExpression: LIST_ATTRS,
-      ExpressionAttributeNames: LIST_NAMES,
-      ExclusiveStartKey,
-    }));
-    items.push(...result.Items);
-    ExclusiveStartKey = result.LastEvaluatedKey;
-  } while (ExclusiveStartKey);
-  // bỏ các item meta nội bộ (vd __trending__) khỏi mọi danh sách
-  const visible = items.filter((m) => !(m.id || '').startsWith('__'));
-  // phim vừa được kkphim cập nhật (tập mới) nổi lên đầu
-  visible.sort((a, b) =>
-    (b.modifiedAt || b.createdAt || '').localeCompare(a.modifiedAt || a.createdAt || ''));
+  _scanInflight = (async () => {
+    const items = [];
+    let ExclusiveStartKey;
+    do {
+      const result = await client.send(new ScanCommand({
+        TableName: TABLE,
+        ProjectionExpression: LIST_ATTRS,
+        ExpressionAttributeNames: LIST_NAMES,
+        ExclusiveStartKey,
+      }));
+      items.push(...result.Items);
+      ExclusiveStartKey = result.LastEvaluatedKey;
+    } while (ExclusiveStartKey);
+    const visible = items.filter((m) => !(m.id || '').startsWith('__'));
+    visible.sort((a, b) =>
+      (b.modifiedAt || b.createdAt || '').localeCompare(a.modifiedAt || a.createdAt || ''));
 
-  _scanCache = visible;
-  _scanCacheAt = Date.now();
-  return visible;
+    _scanCache = visible;
+    _scanCacheAt = Date.now();
+    return visible;
+  })();
+
+  try {
+    return await _scanInflight;
+  } finally {
+    _scanInflight = null;
+  }
 }
 
 function paginate(items, params) {
@@ -180,64 +188,29 @@ exports.handler = async (event) => {
 
     if (seg1 === 'hot') {
       const limitHot = Math.min(parseInt(params.limit || '12', 10) || 12, 50);
-      // Ưu tiên bảng TMDB Trending (sync tổng hợp mỗi đêm, đã khớp sang kkphim)
-      try {
-        const meta = await client.send(new GetCommand({
-          TableName: TABLE,
-          Key: { id: '__trending__' },
-          ProjectionExpression: 'trendingSlugs',
-        }));
-        const slugs = (meta.Item && meta.Item.trendingSlugs) || [];
-        if (slugs.length >= 5) {
-          const bySlug = new Map((await scanAll()).map((m) => [m.slug, m]));
-          const hot = slugs.map((s) => bySlug.get(s)).filter(Boolean);
-          if (hot.length >= 5) {
-            return response(200, {
-              success: true,
-              data: hot.slice(0, limitHot).map(toCard),
-              source: 'tmdb-trending',
-            });
-          }
-        }
-      } catch (err) {
-        console.warn('trending read failed:', err.message);
-      }
+      return response(200, { success: true, data: await getHotCards(limitHot) });
+    }
 
-      // "Hot" = recent movies ranked by TMDB audience score (rating × popularity).
-      // The pick rotates DAILY: a date-seeded shuffle of the hot pool, so every
-      // day shows a different hot line-up; newly-hot movies join the pool automatically.
+    // /api/movies/home — TOÀN BỘ dữ liệu trang chủ trong 1 lần gọi
+    // (1 lần quét bảng thay vì app bắn ~10 request song song gây nghẽn,
+    //  đây là lý do các section trước đây lúc hiện lúc không)
+    if (seg1 === 'home') {
       const items = await scanAll();
-      const currentYear = new Date().getFullYear();
-      // chỉ phim ĐANG hot: vừa được kkphim cập nhật trong 45 ngày + có điểm khán giả
-      const recentCutoff = new Date(Date.now() - 45 * 86400000).toISOString();
-      const pool = items
-        .filter((m) =>
-          (m.year || 0) >= currentYear - 1 &&
-          (m.votes || 0) > 0 &&
-          (m.modifiedAt || m.createdAt || '') >= recentCutoff)
-        .sort((a, b) => {
-          const score = (m) => (m.rating || 0) * Math.log10((m.votes || 0) + 1);
-          return score(b) - score(a);
-        })
-        .slice(0, 50); // only genuinely hot titles enter the rotation
+      const pick = (pred, n = 12) => items.filter(pred).slice(0, n).map(toCard);
 
-      // day number in Vietnam time (UTC+7) -> same line-up all day, new one at midnight
-      const daySeed = Math.floor((Date.now() + 7 * 3600 * 1000) / 86400000);
-      let state = daySeed;
-      const rand = () => {
-        // mulberry32 PRNG — deterministic for the whole day
-        state |= 0; state = (state + 0x6D2B79F5) | 0;
-        let t = Math.imul(state ^ (state >>> 15), 1 | state);
-        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-      };
-      for (let i = pool.length - 1; i > 0; i--) {
-        const j = Math.floor(rand() * (i + 1));
-        [pool[i], pool[j]] = [pool[j], pool[i]];
-      }
-
-      const limit = Math.min(parseInt(params.limit || '12', 10) || 12, 50);
-      return response(200, { success: true, data: pool.slice(0, limit).map(toCard) });
+      return response(200, {
+        success: true,
+        data: {
+          hot: await getHotCards(12),
+          latest: items.slice(0, 12).map(toCard),
+          korean: pick((m) => (m.countrySlugs || '').includes('han-quoc')),
+          chinese: pick((m) => (m.countrySlugs || '').includes('trung-quoc')),
+          vietnam: pick((m) => (m.countrySlugs || '').includes('viet-nam')),
+          animation: pick((m) => m.type === 'hoathinh'),
+          single: pick((m) => m.type === 'single'),
+          series: pick((m) => m.type === 'series'),
+        },
+      });
     }
 
     if (seg1 === 'type') {
@@ -277,6 +250,54 @@ exports.handler = async (event) => {
     return response(500, { success: false, message: 'Internal server error' });
   }
 };
+
+// Slide "hot": ưu tiên bảng TMDB Trending (sync khớp sang kkphim mỗi đêm);
+// thiếu thì rơi về pool phim mới cập nhật có điểm cao, xáo trộn theo ngày.
+async function getHotCards(limit) {
+  try {
+    const meta = await client.send(new GetCommand({
+      TableName: TABLE,
+      Key: { id: '__trending__' },
+      ProjectionExpression: 'trendingSlugs',
+    }));
+    const slugs = (meta.Item && meta.Item.trendingSlugs) || [];
+    if (slugs.length > 0) {
+      const bySlug = new Map((await scanAll()).map((m) => [m.slug, m]));
+      const hot = slugs.map((s) => bySlug.get(s)).filter(Boolean);
+      if (hot.length > 0) return hot.slice(0, limit).map(toCard);
+    }
+  } catch (err) {
+    console.warn('trending read failed:', err.message);
+  }
+
+  const items = await scanAll();
+  const currentYear = new Date().getFullYear();
+  const recentCutoff = new Date(Date.now() - 45 * 86400000).toISOString();
+  const pool = items
+    .filter((m) =>
+      (m.year || 0) >= currentYear - 1 &&
+      (m.votes || 0) > 0 &&
+      (m.modifiedAt || m.createdAt || '') >= recentCutoff)
+    .sort((a, b) => {
+      const score = (m) => (m.rating || 0) * Math.log10((m.votes || 0) + 1);
+      return score(b) - score(a);
+    })
+    .slice(0, 50);
+
+  // xáo trộn theo ngày (giờ VN): cả ngày ổn định, qua đêm đổi bộ mới
+  let state = Math.floor((Date.now() + 7 * 3600 * 1000) / 86400000);
+  const rand = () => {
+    state |= 0; state = (state + 0x6D2B79F5) | 0;
+    let t = Math.imul(state ^ (state >>> 15), 1 | state);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, limit).map(toCard);
+}
 
 // Actor list with real photos from TMDB. Returns [] when no key / no tmdb id,
 // so the app can fall back to its local placeholder avatars.
