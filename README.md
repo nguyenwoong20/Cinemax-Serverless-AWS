@@ -134,14 +134,15 @@ sam delete
 - 🖥️ [cinemax-backend](https://github.com/nguyenwoong20/cinemax-backend) — backend Express/MongoDB gốc (đã được thay thế bởi repo này)
 ## 📱 Ảnh giao diện Cinemax
 
-### Trang chủ và khám phá
-
-<img src="docs/screenshots/01-cinemax.png" alt="Trang chủ" width="150"> <img src="docs/screenshots/02-cinemax.png" alt="Danh mục phim" width="150"> <img src="docs/screenshots/03-cinemax.png" alt="Tìm kiếm" width="150"> <img src="docs/screenshots/04-cinemax.png" alt="Phim đã lưu" width="150">
-
-### Tài khoản và xem chung
-
-<img src="docs/screenshots/05-cinemax.png" alt="Xem chung" width="150"> <img src="docs/screenshots/06-cinemax.png" alt="Hồ sơ" width="150">
-
-### Nội dung phim
-
-<img src="docs/screenshots/07-cinemax.png" alt="Nội dung phim" width="150"> <img src="docs/screenshots/08-cinemax.png" alt="Nội dung phim và diễn viên" width="150">
+<table>
+  <tr>
+    <td><img src="docs/screenshots/01-cinemax.png" alt="Trang chủ" width="150"></td>
+    <td><img src="docs/screenshots/02-cinemax.png" alt="Danh mục phim" width="150"></td>
+    <td><img src="docs/screenshots/03-cinemax.png" alt="Tìm kiếm" width="150"></td>
+    <td><img src="docs/screenshots/04-cinemax.png" alt="Phim đã lưu" width="150"></td>
+    <td><img src="docs/screenshots/05-cinemax.png" alt="Xem chung" width="150"></td>
+    <td><img src="docs/screenshots/06-cinemax.png" alt="Hồ sơ" width="150"></td>
+    <td><img src="docs/screenshots/07-cinemax.png" alt="Nội dung phim" width="150"></td>
+    <td><img src="docs/screenshots/08-cinemax.png" alt="Nội dung phim và diễn viên" width="150"></td>
+  </tr>
+</table>
