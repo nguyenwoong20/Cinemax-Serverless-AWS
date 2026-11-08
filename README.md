@@ -134,38 +134,14 @@ sam delete
 - 🖥️ [cinemax-backend](https://github.com/nguyenwoong20/cinemax-backend) — backend Express/MongoDB gốc (đã được thay thế bởi repo này)
 ## 📱 Ảnh giao diện Cinemax
 
-### Trang chủ
-
-![Cinemax Trang chủ](docs/screenshots/01-cinemax.png)
-
-### Danh mục phim
-
-![Cinemax Danh mục phim](docs/screenshots/02-cinemax.png)
-
-### Tìm kiếm
-
-![Cinemax Tìm kiếm](docs/screenshots/03-cinemax.png)
-
-### Phim đã lưu
-
-![Cinemax Phim đã lưu](docs/screenshots/04-cinemax.png)
-
-### Xem chung
-
-![Cinemax Xem chung](docs/screenshots/05-cinemax.png)
-
-### Hồ sơ
-
-![Cinemax Hồ sơ](docs/screenshots/06-cinemax.png)
-
-### Chi tiết phim
-
-![Cinemax Chi tiết phim](docs/screenshots/07-cinemax.png)
-
-### Nội dung và diễn viên
-
-![Cinemax Nội dung và diễn viên](docs/screenshots/08-cinemax.png)
-
-### Nội dung và diễn viên (bản bổ sung)
-
-![Cinemax Nội dung và diễn viên (bản bổ sung)](docs/screenshots/09-cinemax.png)
+<div style="display:flex;flex-wrap:nowrap;gap:12px;overflow-x:auto;padding:8px 0;">
+  <img src="docs/screenshots/01-cinemax.png" alt="Trang chủ" width="180">
+  <img src="docs/screenshots/02-cinemax.png" alt="Danh mục phim" width="180">
+  <img src="docs/screenshots/03-cinemax.png" alt="Tìm kiếm" width="180">
+  <img src="docs/screenshots/04-cinemax.png" alt="Phim đã lưu" width="180">
+  <img src="docs/screenshots/05-cinemax.png" alt="Xem chung" width="180">
+  <img src="docs/screenshots/06-cinemax.png" alt="Hồ sơ" width="180">
+  <img src="docs/screenshots/07-cinemax.png" alt="Chi tiết phim" width="180">
+  <img src="docs/screenshots/08-cinemax.png" alt="Nội dung và diễn viên" width="180">
+  <img src="docs/screenshots/09-cinemax.png" alt="Nội dung và diễn viên (bản bổ sung)" width="180">
+</div>
