@@ -1,4 +1,4 @@
-﻿# 🎬 Cinemax Serverless AWS
+# 🎬 Cinemax Serverless AWS
 
 Backend serverless trên AWS cho ứng dụng xem phim **Cinemax** (Flutter). Dự án tái kiến trúc backend Node.js/Express + MongoDB truyền thống thành kiến trúc **100% serverless** — không server nào phải chạy 24/7, tự động scale, chi phí vận hành ≈ $0 với AWS Free Tier.
 
@@ -132,3 +132,40 @@ sam delete
 
 - 📱 [Cinemax-Flutter-App](https://github.com/nguyenwoong20/Cinemax-Flutter-App) — ứng dụng Flutter
 - 🖥️ [cinemax-backend](https://github.com/nguyenwoong20/cinemax-backend) — backend Express/MongoDB gốc (đã được thay thế bởi repo này)
+## 📱 Ảnh giao diện Cinemax
+
+### Trang chủ
+
+![Cinemax Trang chủ](docs/screenshots/01-cinemax.png)
+
+### Danh mục phim
+
+![Cinemax Danh mục phim](docs/screenshots/02-cinemax.png)
+
+### Tìm kiếm
+
+![Cinemax Tìm kiếm](docs/screenshots/03-cinemax.png)
+
+### Phim đã lưu
+
+![Cinemax Phim đã lưu](docs/screenshots/04-cinemax.png)
+
+### Xem chung
+
+![Cinemax Xem chung](docs/screenshots/05-cinemax.png)
+
+### Hồ sơ
+
+![Cinemax Hồ sơ](docs/screenshots/06-cinemax.png)
+
+### Chi tiết phim
+
+![Cinemax Chi tiết phim](docs/screenshots/07-cinemax.png)
+
+### Nội dung và diễn viên
+
+![Cinemax Nội dung và diễn viên](docs/screenshots/08-cinemax.png)
+
+### Nội dung và diễn viên (bản bổ sung)
+
+![Cinemax Nội dung và diễn viên (bản bổ sung)](docs/screenshots/09-cinemax.png)
